@@ -20,7 +20,7 @@ final class WalletPickerViewController: UIViewController {
     // MARK: - Properties
     
     private let containerView: UIView = {
-        $0.backgroundColor = .magenta
+        $0.backgroundColor = .white
 //        $0.layer.cornerRadius = Constraints.buttonHeight / 2
 //        $0.layer.shadowColor = Palette.Background.basisDark.color.cgColor
 //        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -222,6 +222,17 @@ extension WalletPickerViewController {
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
         pageController.didMove(toParent: self)
+        
+        setupPageControll()
+    }
+    
+    func setupPageControll(){
+        let apperance = UIPageControl.appearance()
+        apperance.pageIndicatorTintColor = UIColor.lightGray
+        apperance.currentPageIndicatorTintColor = UIColor.darkGray
+        apperance.backgroundColor = UIColor.clear
+        
+        
     }
 }
 

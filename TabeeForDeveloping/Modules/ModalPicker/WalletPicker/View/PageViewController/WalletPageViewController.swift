@@ -6,10 +6,8 @@
 //
 
 import Foundation
-
-
-
 import UIKit
+import SnapKit
 
 enum Pages: CaseIterable {
     case pageZero
@@ -17,16 +15,16 @@ enum Pages: CaseIterable {
     case pageTwo
     case pageThree
     
-    var name: String {
+    var color: UIColor {
         switch self {
         case .pageZero:
-            return "This is page zero"
+            return .red
         case .pageOne:
-            return "This is page one"
+            return .green
         case .pageTwo:
-            return "This is page two"
+            return .blue
         case .pageThree:
-            return "This is page three"
+            return .magenta
         }
     }
     
@@ -45,19 +43,20 @@ enum Pages: CaseIterable {
 }
 
 class WalletPageViewController: UIViewController {
-    
-    let iconView: UIImageView = {
-        //$0.image = UIImage(named: <#T##String#>systemName: "")
-        $0.tintColor = .green
-        $0.contentMode = .scaleAspectFit
+
+    let coloredView: UIView = {
+        $0.backgroundColor = .green
+        $0.layer.cornerRadius = 25
         return $0
-    }(UIImageView())
+    }(UIView())
     
     var page: Pages
     
     init(with page: Pages) {
         self.page = page
         
+        coloredView.backgroundColor = page.color
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,6 +67,15 @@ class WalletPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addSubview(coloredView)
+        coloredView.snp.makeConstraints { make in
+            make.width.height.equalTo(50)
+            make.center.equalToSuperview()
+            //make.top.bottom.equalToSuperview()
+        }
+        
+        
+        
         //self.view.addSubview(titleLabel!)
     }
 }
