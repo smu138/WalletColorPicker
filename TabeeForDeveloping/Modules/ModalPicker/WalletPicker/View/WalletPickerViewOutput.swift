@@ -9,4 +9,6 @@
 protocol WalletPickerViewOutput {
     func viewIsReady()
     func viewWillAppear()
+    
+    func closeTapped()
 }

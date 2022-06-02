@@ -127,6 +127,7 @@ private extension WalletPickerViewController {
 extension WalletPickerViewController {
     @objc func buttonActionHandler(_ button: UIButton) {
         print("tapped - closing modal")
+        output.closeTapped()
     }
 }
 

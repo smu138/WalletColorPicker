@@ -9,6 +9,7 @@ import UIKit
 import FloatingPanel
 
 class ViewController: UIViewController {
+    let fpc = FloatingPanelController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ extension ViewController {
     @IBAction func openModal(_ sender: Any) {
         let walletViewController = WalletPickerAssembly(output: self).createModule()
         
-        let fpc = FloatingPanelController()
         fpc.set(contentViewController: walletViewController)
 
         fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
@@ -33,12 +33,17 @@ extension ViewController {
         //fpc.behavior = CustomPanelBehavior()
         
         self.present(fpc, animated: true, completion: nil)
+
     }
 }
 
 extension ViewController: WalletPickerModuleOutput {
     func closeModule() {
-        print("поймано закрытие модуля из модалки")
+        
+        fpc.dismiss(animated: true) {
+            print("dismissed")
+        }
+
     }
 }
 

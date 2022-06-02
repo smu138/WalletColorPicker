@@ -28,6 +28,10 @@ final class WalletPickerPresenter {
 // MARK: - WalletPickerViewOutput
 
 extension WalletPickerPresenter: WalletPickerViewOutput {
+    func closeTapped() {
+        output?.closeModule()
+    }
+    
     
     func viewIsReady() {
         view.setupInitialState(dataStore.viewState)
