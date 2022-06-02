@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        view.backgroundColor = .orange
     }
 
 }
@@ -27,12 +28,17 @@ extension ViewController {
         fpc.set(contentViewController: walletViewController)
 
         fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
-
+        
+        fpc.layout = IntrinsicPanelLayout()
+        //fpc.behavior = CustomPanelBehavior()
+        
         self.present(fpc, animated: true, completion: nil)
     }
 }
 
 extension ViewController: WalletPickerModuleOutput {
-    
+    func closeModule() {
+        print("поймано закрытие модуля из модалки")
+    }
 }
 

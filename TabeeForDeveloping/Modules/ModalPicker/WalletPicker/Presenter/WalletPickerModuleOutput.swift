@@ -6,4 +6,6 @@
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-protocol WalletPickerModuleOutput: AnyObject { }
+protocol WalletPickerModuleOutput: AnyObject {
+    func closeModule()
+}

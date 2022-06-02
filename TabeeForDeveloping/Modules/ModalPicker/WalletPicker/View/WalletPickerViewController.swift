@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import FloatingPanel
 
 final class WalletPickerViewController: UIViewController {
     
@@ -126,5 +127,32 @@ private extension WalletPickerViewController {
 extension WalletPickerViewController {
     @objc func buttonActionHandler(_ button: UIButton) {
         print("tapped - closing modal")
+    }
+}
+
+class IntrinsicPanelLayout: FloatingPanelLayout {
+    let position: FloatingPanelPosition = .bottom
+    let initialState: FloatingPanelState = .full
+    var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
+        return [
+            .full: FloatingPanelIntrinsicLayoutAnchor(absoluteOffset: 0, referenceGuide: .safeArea)
+            //.half: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.5, referenceGuide: .safeArea),
+        ]
+    }
+    
+    func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
+            switch state {
+            case .full: return 0.3
+            default: return 0.0
+            }
+    }
+}
+
+
+class CustomPanelBehavior: FloatingPanelBehavior {
+    let springDecelerationRate = UIScrollView.DecelerationRate.fast.rawValue + 0.02
+    let springResponseTime = 0.4
+    func shouldProjectMomentum(_ fpc: FloatingPanelController, to proposedTargetPosition: FloatingPanelState) -> Bool {
+        return true
     }
 }
