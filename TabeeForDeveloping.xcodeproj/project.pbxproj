@@ -7,15 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C744ECB3DA56ECC59A144E7B /* Pods_TabeeForDeveloping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */; };
 		D5FA5A4C2848F7C00094688D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4B2848F7C00094688D /* AppDelegate.swift */; };
 		D5FA5A4E2848F7C00094688D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4D2848F7C00094688D /* SceneDelegate.swift */; };
 		D5FA5A502848F7C00094688D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4F2848F7C00094688D /* ViewController.swift */; };
 		D5FA5A532848F7C00094688D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5FA5A512848F7C00094688D /* Main.storyboard */; };
 		D5FA5A552848F7C10094688D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5FA5A542848F7C10094688D /* Assets.xcassets */; };
 		D5FA5A582848F7C10094688D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5FA5A562848F7C10094688D /* LaunchScreen.storyboard */; };
+		D5FA5A792848FB700094688D /* WalletPickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A652848FB700094688D /* WalletPickerAssembly.swift */; };
+		D5FA5A7A2848FB700094688D /* WalletPickerDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A682848FB700094688D /* WalletPickerDataStore.swift */; };
+		D5FA5A7B2848FB700094688D /* WalletPickerDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A692848FB700094688D /* WalletPickerDataFlow.swift */; };
+		D5FA5A7C2848FB700094688D /* WalletPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A6A2848FB700094688D /* WalletPickerPresenter.swift */; };
+		D5FA5A7D2848FB700094688D /* WalletPickerModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A6B2848FB700094688D /* WalletPickerModuleInput.swift */; };
+		D5FA5A7F2848FB700094688D /* WalletPickerModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A6D2848FB700094688D /* WalletPickerModuleOutput.swift */; };
+		D5FA5A802848FB700094688D /* WalletPickerViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */; };
+		D5FA5A812848FB700094688D /* WalletPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5FA5A702848FB700094688D /* WalletPickerViewController.xib */; };
+		D5FA5A822848FB700094688D /* WalletPickerViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */; };
+		D5FA5A832848FB700094688D /* WalletPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A722848FB700094688D /* WalletPickerViewController.swift */; };
+		D5FA5A842848FB700094688D /* WalletPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A742848FB700094688D /* WalletPickerInteractor.swift */; };
+		D5FA5A852848FB700094688D /* WalletPickerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A752848FB700094688D /* WalletPickerInteractorOutput.swift */; };
+		D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A762848FB700094688D /* WalletPickerInteractorInput.swift */; };
+		D5FA5A872848FB700094688D /* WalletPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A782848FB700094688D /* WalletPickerRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97CFFD880F60C108EEDE6F57 /* Pods-TabeeForDeveloping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabeeForDeveloping.release.xcconfig"; path = "Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping.release.xcconfig"; sourceTree = "<group>"; };
+		C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabeeForDeveloping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FA5A482848F7C00094688D /* TabeeForDeveloping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabeeForDeveloping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FA5A4B2848F7C00094688D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5FA5A4D2848F7C00094688D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +41,21 @@
 		D5FA5A542848F7C10094688D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5FA5A572848F7C10094688D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5FA5A592848F7C10094688D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5FA5A652848FB700094688D /* WalletPickerAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerAssembly.swift; sourceTree = "<group>"; };
+		D5FA5A682848FB700094688D /* WalletPickerDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerDataStore.swift; sourceTree = "<group>"; };
+		D5FA5A692848FB700094688D /* WalletPickerDataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerDataFlow.swift; sourceTree = "<group>"; };
+		D5FA5A6A2848FB700094688D /* WalletPickerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerPresenter.swift; sourceTree = "<group>"; };
+		D5FA5A6B2848FB700094688D /* WalletPickerModuleInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerModuleInput.swift; sourceTree = "<group>"; };
+		D5FA5A6D2848FB700094688D /* WalletPickerModuleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerModuleOutput.swift; sourceTree = "<group>"; };
+		D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerViewInput.swift; sourceTree = "<group>"; };
+		D5FA5A702848FB700094688D /* WalletPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletPickerViewController.xib; sourceTree = "<group>"; };
+		D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerViewOutput.swift; sourceTree = "<group>"; };
+		D5FA5A722848FB700094688D /* WalletPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerViewController.swift; sourceTree = "<group>"; };
+		D5FA5A742848FB700094688D /* WalletPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerInteractor.swift; sourceTree = "<group>"; };
+		D5FA5A752848FB700094688D /* WalletPickerInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerInteractorOutput.swift; sourceTree = "<group>"; };
+		D5FA5A762848FB700094688D /* WalletPickerInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerInteractorInput.swift; sourceTree = "<group>"; };
+		D5FA5A782848FB700094688D /* WalletPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerRouter.swift; sourceTree = "<group>"; };
+		DF5BB56A0A70073DF653BB06 /* Pods-TabeeForDeveloping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabeeForDeveloping.debug.xcconfig"; path = "Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C744ECB3DA56ECC59A144E7B /* Pods_TabeeForDeveloping.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0DD3A7A8991330E8AAEA602 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF5BB56A0A70073DF653BB06 /* Pods-TabeeForDeveloping.debug.xcconfig */,
+				97CFFD880F60C108EEDE6F57 /* Pods-TabeeForDeveloping.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4010ACC9D60D941866288A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5FA5A3F2848F7BF0094688D = {
 			isa = PBXGroup;
 			children = (
 				D5FA5A4A2848F7C00094688D /* TabeeForDeveloping */,
 				D5FA5A492848F7C00094688D /* Products */,
+				B0DD3A7A8991330E8AAEA602 /* Pods */,
+				D4010ACC9D60D941866288A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +108,7 @@
 		D5FA5A4A2848F7C00094688D /* TabeeForDeveloping */ = {
 			isa = PBXGroup;
 			children = (
+				D5FA5A5F2848FAE80094688D /* Modules */,
 				D5FA5A4B2848F7C00094688D /* AppDelegate.swift */,
 				D5FA5A4D2848F7C00094688D /* SceneDelegate.swift */,
 				D5FA5A4F2848F7C00094688D /* ViewController.swift */,
@@ -67,6 +120,91 @@
 			path = TabeeForDeveloping;
 			sourceTree = "<group>";
 		};
+		D5FA5A5F2848FAE80094688D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A602848FAFE0094688D /* ModalPicker */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D5FA5A602848FAFE0094688D /* ModalPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A632848FB700094688D /* WalletPicker */,
+			);
+			path = ModalPicker;
+			sourceTree = "<group>";
+		};
+		D5FA5A632848FB700094688D /* WalletPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A642848FB700094688D /* Assembly */,
+				D5FA5A662848FB700094688D /* Presenter */,
+				D5FA5A6E2848FB700094688D /* View */,
+				D5FA5A732848FB700094688D /* Interactor */,
+				D5FA5A772848FB700094688D /* Router */,
+			);
+			path = WalletPicker;
+			sourceTree = "<group>";
+		};
+		D5FA5A642848FB700094688D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A652848FB700094688D /* WalletPickerAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		D5FA5A662848FB700094688D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A672848FB700094688D /* DataFlow */,
+				D5FA5A6A2848FB700094688D /* WalletPickerPresenter.swift */,
+				D5FA5A6B2848FB700094688D /* WalletPickerModuleInput.swift */,
+				D5FA5A6D2848FB700094688D /* WalletPickerModuleOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D5FA5A672848FB700094688D /* DataFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A682848FB700094688D /* WalletPickerDataStore.swift */,
+				D5FA5A692848FB700094688D /* WalletPickerDataFlow.swift */,
+			);
+			path = DataFlow;
+			sourceTree = "<group>";
+		};
+		D5FA5A6E2848FB700094688D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */,
+				D5FA5A702848FB700094688D /* WalletPickerViewController.xib */,
+				D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */,
+				D5FA5A722848FB700094688D /* WalletPickerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D5FA5A732848FB700094688D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A742848FB700094688D /* WalletPickerInteractor.swift */,
+				D5FA5A752848FB700094688D /* WalletPickerInteractorOutput.swift */,
+				D5FA5A762848FB700094688D /* WalletPickerInteractorInput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D5FA5A772848FB700094688D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A782848FB700094688D /* WalletPickerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5FA5A5C2848F7C10094688D /* Build configuration list for PBXNativeTarget "TabeeForDeveloping" */;
 			buildPhases = (
+				EE06E6130890D21D37D318C5 /* [CP] Check Pods Manifest.lock */,
 				D5FA5A442848F7C00094688D /* Sources */,
 				D5FA5A452848F7C00094688D /* Frameworks */,
 				D5FA5A462848F7C00094688D /* Resources */,
+				9760BA9051420B9BCD3F1415 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,20 +267,76 @@
 			files = (
 				D5FA5A582848F7C10094688D /* LaunchScreen.storyboard in Resources */,
 				D5FA5A552848F7C10094688D /* Assets.xcassets in Resources */,
+				D5FA5A812848FB700094688D /* WalletPickerViewController.xib in Resources */,
 				D5FA5A532848F7C00094688D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9760BA9051420B9BCD3F1415 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE06E6130890D21D37D318C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TabeeForDeveloping-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D5FA5A442848F7C00094688D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FA5A7A2848FB700094688D /* WalletPickerDataStore.swift in Sources */,
+				D5FA5A792848FB700094688D /* WalletPickerAssembly.swift in Sources */,
+				D5FA5A832848FB700094688D /* WalletPickerViewController.swift in Sources */,
+				D5FA5A7B2848FB700094688D /* WalletPickerDataFlow.swift in Sources */,
 				D5FA5A502848F7C00094688D /* ViewController.swift in Sources */,
 				D5FA5A4C2848F7C00094688D /* AppDelegate.swift in Sources */,
+				D5FA5A822848FB700094688D /* WalletPickerViewOutput.swift in Sources */,
+				D5FA5A852848FB700094688D /* WalletPickerInteractorOutput.swift in Sources */,
+				D5FA5A802848FB700094688D /* WalletPickerViewInput.swift in Sources */,
+				D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */,
+				D5FA5A7D2848FB700094688D /* WalletPickerModuleInput.swift in Sources */,
+				D5FA5A7F2848FB700094688D /* WalletPickerModuleOutput.swift in Sources */,
 				D5FA5A4E2848F7C00094688D /* SceneDelegate.swift in Sources */,
+				D5FA5A872848FB700094688D /* WalletPickerRouter.swift in Sources */,
+				D5FA5A7C2848FB700094688D /* WalletPickerPresenter.swift in Sources */,
+				D5FA5A842848FB700094688D /* WalletPickerInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,6 +480,7 @@
 		};
 		D5FA5A5D2848F7C10094688D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF5BB56A0A70073DF653BB06 /* Pods-TabeeForDeveloping.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +492,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +510,7 @@
 		};
 		D5FA5A5E2848F7C10094688D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97CFFD880F60C108EEDE6F57 /* Pods-TabeeForDeveloping.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -323,6 +522,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
