@@ -114,7 +114,7 @@ private extension WalletPickerViewController {
     
     
     func applyStyles() {
-        
+        view.backgroundColor = .white
     }
 }
 
@@ -157,3 +157,5 @@ class CustomPanelBehavior: FloatingPanelBehavior {
         return true
     }
 }
+
+
