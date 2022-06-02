@@ -27,6 +27,7 @@
 		D5FA5A852848FB700094688D /* WalletPickerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A752848FB700094688D /* WalletPickerInteractorOutput.swift */; };
 		D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A762848FB700094688D /* WalletPickerInteractorInput.swift */; };
 		D5FA5A872848FB700094688D /* WalletPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A782848FB700094688D /* WalletPickerRouter.swift */; };
+		D5FA5A8A284911450094688D /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A89284911450094688D /* WalletPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		D5FA5A752848FB700094688D /* WalletPickerInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerInteractorOutput.swift; sourceTree = "<group>"; };
 		D5FA5A762848FB700094688D /* WalletPickerInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerInteractorInput.swift; sourceTree = "<group>"; };
 		D5FA5A782848FB700094688D /* WalletPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerRouter.swift; sourceTree = "<group>"; };
+		D5FA5A89284911450094688D /* WalletPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageViewController.swift; sourceTree = "<group>"; };
 		DF5BB56A0A70073DF653BB06 /* Pods-TabeeForDeveloping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabeeForDeveloping.debug.xcconfig"; path = "Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 		D5FA5A6E2848FB700094688D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D5FA5A882849112B0094688D /* PageViewController */,
 				D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */,
 				D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */,
 				D5FA5A722848FB700094688D /* WalletPickerViewController.swift */,
@@ -200,6 +203,14 @@
 				D5FA5A782848FB700094688D /* WalletPickerRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D5FA5A882849112B0094688D /* PageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5FA5A89284911450094688D /* WalletPageViewController.swift */,
+			);
+			path = PageViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 				D5FA5A822848FB700094688D /* WalletPickerViewOutput.swift in Sources */,
 				D5FA5A852848FB700094688D /* WalletPickerInteractorOutput.swift in Sources */,
 				D5FA5A802848FB700094688D /* WalletPickerViewInput.swift in Sources */,
+				D5FA5A8A284911450094688D /* WalletPageViewController.swift in Sources */,
 				D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */,
 				D5FA5A7D2848FB700094688D /* WalletPickerModuleInput.swift in Sources */,
 				D5FA5A7F2848FB700094688D /* WalletPickerModuleOutput.swift in Sources */,

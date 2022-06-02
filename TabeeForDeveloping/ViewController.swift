@@ -47,10 +47,10 @@ extension ViewController {
         // Define shadows
         let shadow = SurfaceAppearance.Shadow()
         shadow.color = UIColor.black
-        shadow.offset = CGSize(width: 0, height: -3)
+        shadow.offset = CGSize(width: 0, height: -1)
         shadow.radius = 2
         shadow.spread = 1
-        shadow.opacity = 0.5
+        shadow.opacity = 0.3
         appearance.shadows = [shadow]
 
         // Define corner radius and background color

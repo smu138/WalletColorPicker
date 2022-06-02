@@ -12,6 +12,11 @@ import FloatingPanel
 
 final class WalletPickerViewController: UIViewController {
     
+    private var pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    private var pages: [Pages] = Pages.allCases
+    private var currentIndex: Int = 0
+    
+    
     // MARK: - Properties
     
     private let containerView: UIView = {
@@ -67,6 +72,8 @@ final class WalletPickerViewController: UIViewController {
         setupLayout()
         setupActions()
         
+        setupPageController()
+        
         output.viewIsReady()
     }
     
@@ -93,9 +100,10 @@ private extension WalletPickerViewController {
     
     func setupViews() {
         view.addSubview(containerView)
-        containerView.addSubview(vStackView)
-        vStackView.addArrangedSubview(descriptionLabel)
-        vStackView.addArrangedSubview(button)
+
+        //containerView.addSubview(vStackView)
+        //vStackView.addArrangedSubview(descriptionLabel)
+        //vStackView.addArrangedSubview(button)
     }
     
     func setupLayout() {
@@ -103,9 +111,9 @@ private extension WalletPickerViewController {
             make.edges.equalToSuperview().inset(16)
         }
         
-        vStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        vStackView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
     
     func setupActions() {
@@ -185,5 +193,83 @@ public class GrabberViewCustom: UIView {
 
     private func render() {
         self.layer.masksToBounds = true
+    }
+}
+
+
+
+// MARK: - PageViewController
+extension WalletPickerViewController {
+    private func setupPageController() {
+        
+        //self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageController.dataSource = self
+        pageController.delegate = self
+        pageController.view.backgroundColor = .clear
+        //self.pageController.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width, height: 80)
+        addChild(pageController)
+       
+        containerView.addSubview(pageController.view)
+        pageController.view.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(16)
+            make.bottom.equalToSuperview().inset(25)
+        }
+        
+        let initialVC = WalletPageViewController(with: pages[0])
+        
+        pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+        
+        pageController.didMove(toParent: self)
+    }
+}
+
+extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        guard let currentVC = viewController as? WalletPageViewController else {
+            return nil
+        }
+        
+        var index = currentVC.page.index
+        
+        if index == 0 {
+            return nil
+        }
+        
+        index -= 1
+        
+        let vc = WalletPageViewController(with: pages[index])
+        
+        return vc
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        guard let currentVC = viewController as? WalletPageViewController else {
+            return nil
+        }
+        
+        var index = currentVC.page.index
+        
+        if index >= self.pages.count - 1 {
+            return nil
+        }
+        
+        index += 1
+        
+        let vc = WalletPageViewController(with: pages[index])
+        
+        return vc
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return self.pages.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return self.currentIndex
     }
 }
