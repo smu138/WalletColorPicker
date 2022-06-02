@@ -143,7 +143,7 @@ class IntrinsicPanelLayout: FloatingPanelLayout {
     
     func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
             switch state {
-            case .full: return 0.3
+            case .full: return 0.0
             default: return 0.0
             }
     }
@@ -159,3 +159,31 @@ class CustomPanelBehavior: FloatingPanelBehavior {
 }
 
 
+//не используется- но если надо кастомизовать граббер- это можно сделать тут (анимировать или что угодно)
+public class GrabberViewCustom: UIView {
+
+    public var barColor = UIColor(displayP3Red: 0.76, green: 0.77, blue: 0.76, alpha: 1.0) { didSet { backgroundColor = barColor } }
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = barColor
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        render()
+    }
+
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        return view == self ? nil : view
+    }
+
+    private func render() {
+        self.layer.masksToBounds = true
+    }
+}

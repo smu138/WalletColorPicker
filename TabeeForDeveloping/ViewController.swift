@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
     }
 
 }
@@ -47,9 +47,10 @@ extension ViewController {
         // Define shadows
         let shadow = SurfaceAppearance.Shadow()
         shadow.color = UIColor.black
-        shadow.offset = CGSize(width: 0, height: -8)
-        shadow.radius = 8
-        shadow.spread = 3
+        shadow.offset = CGSize(width: 0, height: -3)
+        shadow.radius = 2
+        shadow.spread = 1
+        shadow.opacity = 0.5
         appearance.shadows = [shadow]
 
         // Define corner radius and background color
@@ -62,12 +63,13 @@ extension ViewController {
     
     //опциональная настройка граббера
     func customGrabberHandle() {
-//        let myGrabberHandleView = MyGrabberHandleView()
+//       let myGrabberHandleView = GrabberViewCustom()
 //        fpc.surfaceView.grabberHandle.isHidden = true
 //        fpc.surfaceView.addSubview(myGrabberHandleView)
         
+        //fpc.surfaceView.grabberHandle.barColor = .darkGray
         //fpc.surfaceView.grabberHandlePadding = 10.0
-        //fpc.surfaceView.grabberHandleSize = .init(width: 44.0, height: 12.0)
+        fpc.surfaceView.grabberHandleSize = .init(width: 120.0, height: 5.0)
     }
     
     //Customize content padding from surface edges
