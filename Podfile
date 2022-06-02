@@ -8,4 +8,5 @@ target 'TabeeForDeveloping' do
   # Pods for TabeeForDeveloping
 
   pod 'FloatingPanel'
+  pod 'SnapKit'
 end

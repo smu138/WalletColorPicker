@@ -7,10 +7,51 @@
 //
 
 import UIKit
+import SnapKit
 
 final class WalletPickerViewController: UIViewController {
     
     // MARK: - Properties
+    
+    private let containerView: UIView = {
+        $0.backgroundColor = .magenta
+//        $0.layer.cornerRadius = Constraints.buttonHeight / 2
+//        $0.layer.shadowColor = Palette.Background.basisDark.color.cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        $0.layer.masksToBounds = false
+        return $0
+    }(UIView())
+    
+    
+    private let vStackView: UIStackView = {
+       //$0.isUserInteractionEnabled = false
+        $0.axis = .vertical
+        $0.distribution = .fillProportionally
+        $0.alignment = .center
+        $0.spacing = 16
+        return $0
+    }(UIStackView())
+    
+    private var descriptionLabel: UILabel = {
+        $0.text          = "Здесь какое-то описание и текст и еще что то там"
+        $0.numberOfLines = 0
+        $0.textAlignment = .left
+        $0.lineBreakMode = .byTruncatingMiddle
+        //$0.font          = FontBook.regular.of(style: .body)
+        //$0.textColor     = Palette.Text.contrast.color
+        $0.setContentCompressionResistancePriority(.required, for: .horizontal)
+        return $0
+    }(UILabel())
+    
+    private let button: UIButton = {
+        $0.setTitle("Закрыть модалку", for: .normal)
+        //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
+        $0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        //$0.tintColor = Palette.Text.contrast.color
+        return $0
+    }(UIButton(type: .system))
+    
+    
     
     var output: WalletPickerViewOutput!
     
@@ -50,16 +91,26 @@ extension WalletPickerViewController: WalletPickerViewInput {
 private extension WalletPickerViewController {
     
     func setupViews() {
-        
+        view.addSubview(containerView)
+        containerView.addSubview(vStackView)
+        vStackView.addArrangedSubview(descriptionLabel)
+        vStackView.addArrangedSubview(button)
     }
     
     func setupLayout() {
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(16)
+        }
         
+        vStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     func setupActions() {
-        
+        button.addTarget(self, action: #selector(buttonActionHandler(_:)), for: .touchUpInside)
     }
+    
     
     func applyStyles() {
         
@@ -70,4 +121,10 @@ private extension WalletPickerViewController {
 
 private extension WalletPickerViewController {
     struct Constraints { }
+}
+
+extension WalletPickerViewController {
+    @objc func buttonActionHandler(_ button: UIButton) {
+        print("tapped - closing modal")
+    }
 }
