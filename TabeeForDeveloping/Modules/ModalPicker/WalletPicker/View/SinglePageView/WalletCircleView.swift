@@ -8,6 +8,7 @@
 import UIKit
 
 class WalletCircleView: UIView {
+
     
     struct ColorsData {
         let leftColor: UIColor
@@ -21,6 +22,7 @@ class WalletCircleView: UIView {
         let activityInProgress: Bool //показывать ли на нем индикатор загрузки
         let needBorder: Bool //бордер вокруг
         let borderColor: UIColor
+        let borderWidth: CGFloat
         
         let cornerRadius: CGFloat
     }
@@ -46,20 +48,20 @@ class WalletCircleView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        
         let size: CGFloat = rect.height
         let halfSize = size / 2
         
         let bgLayer = CAShapeLayer()
         bgLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: colorsData.cornerRadius).cgPath
         bgLayer.fillColor = colorsData.backgroundColoe.cgColor
-        
+
         if colorsData.needBorder {
-            bgLayer.strokeColor = colorsData.borderColor.cgColor
+            layer.borderWidth = colorsData.borderWidth
+            layer.borderColor = colorsData.borderColor.cgColor
+            layer.cornerRadius = colorsData.cornerRadius
         }
 
         layer.addSublayer(bgLayer)
-        
         
         let pathLeft = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: colorsData.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: false)
         let pathRight = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: colorsData.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: true)

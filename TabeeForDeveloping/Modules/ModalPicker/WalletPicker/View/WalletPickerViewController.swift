@@ -259,6 +259,7 @@ extension WalletPickerViewController {
                 activityInProgress: true,
                 needBorder: false,
                 borderColor: .green,
+                borderWidth: 2,
                 cornerRadius: 3),
                   action: { })
         ]))

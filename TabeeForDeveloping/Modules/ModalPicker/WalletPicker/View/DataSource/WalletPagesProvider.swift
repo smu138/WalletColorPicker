@@ -24,6 +24,7 @@ struct WalletPagesProvider {
                         activityInProgress: false,
                         needBorder: true,
                         borderColor: .blue,
+                        borderWidth: 2,
                         cornerRadius: 5),
                       action: {
                           print("тап на кружочке id1")
@@ -38,6 +39,7 @@ struct WalletPagesProvider {
                             activityInProgress: false,
                             needBorder: false,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id15555")
@@ -52,6 +54,7 @@ struct WalletPagesProvider {
                             activityInProgress: false,
                             needBorder: false,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id13312")
@@ -66,6 +69,7 @@ struct WalletPagesProvider {
                             activityInProgress: true,
                             needBorder: true,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id55")
@@ -80,6 +84,7 @@ struct WalletPagesProvider {
                             activityInProgress: false,
                             needBorder: true,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id1112")
@@ -97,6 +102,7 @@ struct WalletPagesProvider {
                             activityInProgress: false,
                             needBorder: true,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id1")
@@ -111,6 +117,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: false,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id15555")
@@ -125,6 +132,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: false,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id13312")
@@ -139,6 +147,7 @@ struct WalletPagesProvider {
                                 activityInProgress: true,
                                 needBorder: true,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id55")
@@ -153,6 +162,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: true,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id1112")
@@ -169,6 +179,7 @@ struct WalletPagesProvider {
                             activityInProgress: false,
                             needBorder: true,
                             borderColor: .blue,
+                            borderWidth: 2,
                             cornerRadius: 5),
                           action: {
                               print("тап на кружочке id1")
@@ -183,6 +194,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: false,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id15555")
@@ -197,6 +209,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: false,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id13312")
@@ -211,6 +224,7 @@ struct WalletPagesProvider {
                                 activityInProgress: true,
                                 needBorder: true,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id55")
@@ -225,6 +239,7 @@ struct WalletPagesProvider {
                                 activityInProgress: false,
                                 needBorder: true,
                                 borderColor: .blue,
+                                borderWidth: 2,
                                 cornerRadius: 5),
                               action: {
                                   print("тап на кружочке id1112")
