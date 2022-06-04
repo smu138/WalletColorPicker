@@ -6,4 +6,6 @@
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-protocol WalletPickerInteractorOutput: AnyObject { }
+protocol WalletPickerInteractorOutput: AnyObject {
+    func getPagesDidFinish(with state: WalletPickerDataFlow.Presenter.PagesState)
+}

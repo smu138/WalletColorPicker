@@ -13,7 +13,7 @@ import FloatingPanel
 final class WalletPickerViewController: UIViewController {
     
     private var pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    private var pages: [Pages] = Pages.allCases
+    private var pages: [WalletSinglePage] = []
     private var currentIndex: Int = 0
     
     private let pageControl: UIPageControl = {
@@ -96,7 +96,39 @@ final class WalletPickerViewController: UIViewController {
 // MARK: - WalletPickerViewInput
 
 extension WalletPickerViewController: WalletPickerViewInput {
-    func setupInitialState(_ viewState: WalletPickerDataFlow.View.ViewState) { }
+    
+    func updateView(_ viewState: DataFlow.ViewState) {
+        switch viewState {
+            
+        case .loading:
+            //TODO: сюда надо какой нибудь лоадер
+            ()
+        case .loaded(pages: let pages):
+            self.pages = pages
+            
+            //pageController.dataSource = nil;
+            //pageController.dataSource = self;
+            
+            //pageController.delegate = nil;
+            //pageController.delegate = self;
+
+            let controllers = createWalletPageController()
+            
+            pageController.setViewControllers([controllers.first!], direction: .forward, animated: true, completion: nil)
+            
+            pageControl.numberOfPages = pages.count
+            
+        case .error:
+            //TODO: отобразить ошибку
+            ()
+        }
+        
+        //pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func setupInitialState(_ viewState: WalletPickerDataFlow.View.ViewState) {
+        //TODO: показать loading screen
+    }
 }
 
 // MARK: - Setup
@@ -117,21 +149,7 @@ private extension WalletPickerViewController {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
         }
-        
-        pageController.view.snp.makeConstraints { make in
-            make.height.equalTo(80)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalToSuperview().offset(16)
-           // make.bottom.equalToSuperview().inset(25)
-        }
-        
-        pageControl.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(30)
-            make.top.equalTo(pageController.view.snp.bottom).offset(16)
-            make.bottom.equalToSuperview().inset(25)
-        }
-        
+
 //        vStackView.snp.makeConstraints { make in
 //            make.edges.equalToSuperview()
 //        }
@@ -232,18 +250,33 @@ extension WalletPickerViewController {
         containerView.addSubview(pageController.view)
         containerView.addSubview(pageControl)
         
-        let initialVC = WalletPageViewController(with: pages[0])
+        let initialVC = WalletPageViewController(with: .init(pageIndex: 0, colorCircles: [
+            .init(id: "startValue", activeBorderColor: .clear, backgroundColor: .clear, leftColor: .clear, rightColor: .clear, inProgress: true, action: { })
+        ]))
         
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
         pageController.didMove(toParent: self)
         
         pageControl.numberOfPages = pages.count
-        //setupPageControll()
+        
+        pageController.view.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(16)
+           // make.bottom.equalToSuperview().inset(25)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+            make.top.equalTo(pageController.view.snp.bottom).offset(16)
+            make.bottom.equalToSuperview().inset(25)
+        }
     }
     
     
-    //конфиг для дефолтного пейдж контрола - но мы тут юзаем кастомный
+    //конфиг для дефолтного пейдж контрола - но мы тут юзаем кастомный - поэтоу пока закомментил
 //    func setupPageControll(){
 //
 //        let apperance = UIPageControl.appearance()
@@ -251,6 +284,16 @@ extension WalletPickerViewController {
 //        apperance.currentPageIndicatorTintColor = UIColor.darkGray
 //        apperance.backgroundColor = UIColor.clear
 //    }
+    
+    func createWalletPageController() -> [WalletPageViewController] {
+        let pages: [WalletPageViewController] = pages.map { singlePageModel in
+            let controller = WalletPageViewController(with: singlePageModel)
+            
+            return controller
+        }
+        
+        return pages
+    }
 }
 
 extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -261,7 +304,7 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
             return nil
         }
         
-        var index = currentVC.page.index
+        var index = currentVC.page.pageIndex
         
         if index == 0 {
             return nil
@@ -280,7 +323,7 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
             return nil
         }
         
-        var index = currentVC.page.index
+        var index = currentVC.page.pageIndex
         
         if index >= self.pages.count - 1 {
             return nil
@@ -309,6 +352,6 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
             return
         }
 
-        pageControl.currentPage = currentVC.page.index
+        pageControl.currentPage = currentVC.page.pageIndex
     }
 }

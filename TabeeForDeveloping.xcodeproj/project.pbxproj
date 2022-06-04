@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C744ECB3DA56ECC59A144E7B /* Pods_TabeeForDeveloping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */; };
+		D59F3D9A284B8F190059A432 /* WalletPagesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */; };
+		D59F3D9F284B90F40059A432 /* WalletCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3D9E284B90F40059A432 /* WalletCircleView.swift */; };
+		D59F3DA4284B93870059A432 /* WalletSinglePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3DA3284B93870059A432 /* WalletSinglePage.swift */; };
 		D5FA5A4C2848F7C00094688D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4B2848F7C00094688D /* AppDelegate.swift */; };
 		D5FA5A4E2848F7C00094688D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4D2848F7C00094688D /* SceneDelegate.swift */; };
 		D5FA5A502848F7C00094688D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4F2848F7C00094688D /* ViewController.swift */; };
@@ -33,6 +36,9 @@
 /* Begin PBXFileReference section */
 		97CFFD880F60C108EEDE6F57 /* Pods-TabeeForDeveloping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabeeForDeveloping.release.xcconfig"; path = "Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping.release.xcconfig"; sourceTree = "<group>"; };
 		C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabeeForDeveloping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPagesProvider.swift; sourceTree = "<group>"; };
+		D59F3D9E284B90F40059A432 /* WalletCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCircleView.swift; sourceTree = "<group>"; };
+		D59F3DA3284B93870059A432 /* WalletSinglePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSinglePage.swift; sourceTree = "<group>"; };
 		D5FA5A482848F7C00094688D /* TabeeForDeveloping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabeeForDeveloping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FA5A4B2848F7C00094688D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5FA5A4D2848F7C00094688D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +91,23 @@
 				C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D59F3D9B284B90990059A432 /* SinglePageView */ = {
+			isa = PBXGroup;
+			children = (
+				D59F3D9E284B90F40059A432 /* WalletCircleView.swift */,
+			);
+			path = SinglePageView;
+			sourceTree = "<group>";
+		};
+		D59F3DA0284B93550059A432 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */,
+				D59F3DA3284B93870059A432 /* WalletSinglePage.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		D5FA5A3F2848F7BF0094688D = {
@@ -179,6 +202,8 @@
 		D5FA5A6E2848FB700094688D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D59F3DA0284B93550059A432 /* DataSource */,
+				D59F3D9B284B90990059A432 /* SinglePageView */,
 				D5FA5A882849112B0094688D /* PageViewController */,
 				D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */,
 				D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */,
@@ -336,11 +361,14 @@
 				D5FA5A4C2848F7C00094688D /* AppDelegate.swift in Sources */,
 				D5FA5A822848FB700094688D /* WalletPickerViewOutput.swift in Sources */,
 				D5FA5A852848FB700094688D /* WalletPickerInteractorOutput.swift in Sources */,
+				D59F3D9A284B8F190059A432 /* WalletPagesProvider.swift in Sources */,
 				D5FA5A802848FB700094688D /* WalletPickerViewInput.swift in Sources */,
 				D5FA5A8A284911450094688D /* WalletPageViewController.swift in Sources */,
 				D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */,
 				D5FA5A7D2848FB700094688D /* WalletPickerModuleInput.swift in Sources */,
 				D5FA5A7F2848FB700094688D /* WalletPickerModuleOutput.swift in Sources */,
+				D59F3DA4284B93870059A432 /* WalletSinglePage.swift in Sources */,
+				D59F3D9F284B90F40059A432 /* WalletCircleView.swift in Sources */,
 				D5FA5A4E2848F7C00094688D /* SceneDelegate.swift in Sources */,
 				D5FA5A872848FB700094688D /* WalletPickerRouter.swift in Sources */,
 				D5FA5A7C2848FB700094688D /* WalletPickerPresenter.swift in Sources */,

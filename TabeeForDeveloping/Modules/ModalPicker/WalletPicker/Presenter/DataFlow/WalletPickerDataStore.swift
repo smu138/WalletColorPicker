@@ -12,10 +12,19 @@ class WalletPickerDataStore {
     
     // MARK: View States
     var viewState: WalletPickerDataFlow.View.ViewState {
-        return .loading
+        switch pagesLoadingState {
+            
+        case .loading:
+            return .loading
+        case .loaded(pages: let pages):
+            return .loaded(pages: pages)
+        case .error:
+            return .error
+        }
     }
 
     // MARK: Presenter States
+    var pagesLoadingState: WalletPickerDataFlow.Presenter.PagesState = .loading
 
     // MARK: Interactor States
 

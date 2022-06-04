@@ -37,7 +37,9 @@ extension WalletPickerPresenter: WalletPickerViewOutput {
         view.setupInitialState(dataStore.viewState)
     }
     
-    func viewWillAppear() { }
+    func viewWillAppear() {
+        getPages()
+    }
 }
 
 // MARK: - WalletPickerModuleInput
@@ -50,10 +52,23 @@ extension WalletPickerPresenter: WalletPickerModuleInput {
 
 extension WalletPickerPresenter: WalletPickerInteractorOutput {
     
+    //это тестовый метод. данные страничек будут приходить снаружи модуля
+    func getPagesDidFinish(with state: WalletPickerDataFlow.Presenter.PagesState) {
+        dataStore.pagesLoadingState = state
+        
+        view.updateView(dataStore.viewState)
+    }
+    
+    
 }
 
 // MARK: - Private
 
 private extension WalletPickerPresenter {
-    
+    func getPages() {
+        dataStore.pagesLoadingState = .loading
+        view.updateView(dataStore.viewState)
+        
+        interactor.getPages()
+    }
 }

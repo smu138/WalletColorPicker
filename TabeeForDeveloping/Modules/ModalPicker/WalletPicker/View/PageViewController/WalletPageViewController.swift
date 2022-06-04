@@ -9,55 +9,39 @@ import Foundation
 import UIKit
 import SnapKit
 
-enum Pages: CaseIterable {
-    case pageZero
-    case pageOne
-    case pageTwo
-    case pageThree
-    
-    var color: UIColor {
-        switch self {
-        case .pageZero:
-            return .red
-        case .pageOne:
-            return .green
-        case .pageTwo:
-            return .blue
-        case .pageThree:
-            return .magenta
-        }
-    }
-    
-    var index: Int {
-        switch self {
-        case .pageZero:
-            return 0
-        case .pageOne:
-            return 1
-        case .pageTwo:
-            return 2
-        case .pageThree:
-            return 3
-        }
-    }
-}
 
 class WalletPageViewController: UIViewController {
-
-    let coloredView: UIView = {
-        $0.backgroundColor = .green
+    
+    let page: WalletSinglePage
+    
+    let containerView: UIView = {
+        $0.backgroundColor = .white
         $0.layer.cornerRadius = 25
         return $0
     }(UIView())
     
-    var page: Pages
+    private let hStackView: UIStackView = {
+        //$0.isUserInteractionEnabled = false
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .equalSpacing
+        $0.spacing = 8
+        return $0
+    }(UIStackView())
     
-    init(with page: Pages) {
+    
+    
+    init(with page: WalletSinglePage) {
         self.page = page
-        
-        coloredView.backgroundColor = page.color
 
         super.init(nibName: nil, bundle: nil)
+        
+        setupView()
+        setupConstraints()
+        applyStyles()
+        setupActions()
+        
+        createCircles()
     }
     
     required init?(coder: NSCoder) {
@@ -66,16 +50,48 @@ class WalletPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func setupView() {
+        view.addSubview(containerView)
+        containerView.addSubview(hStackView)
+    }
 
-        view.addSubview(coloredView)
-        coloredView.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
-            make.center.equalToSuperview()
+    func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            //make.center.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
+            
             //make.top.bottom.equalToSuperview()
         }
-        
-        
-        
-        //self.view.addSubview(titleLabel!)
+
+        hStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    func setupActions() { }
+    
+    func applyStyles() { }
+    
+}
+
+private extension WalletPageViewController {
+    func createCircles() {
+        page.colorCircles.forEach { singleCircle in
+            let circleView: WalletCircleView = {
+                let singleCircleView = WalletCircleView(leftColor: singleCircle.leftColor, rightColor: singleCircle.rightColor)
+                return singleCircleView
+            }()
+            
+            circleView.snp.makeConstraints { make in
+                make.width.height.equalTo(30)
+            }
+            
+            hStackView.addArrangedSubview(circleView)
+
+        }
     }
 }

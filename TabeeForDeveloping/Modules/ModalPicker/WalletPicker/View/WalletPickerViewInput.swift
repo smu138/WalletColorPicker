@@ -10,4 +10,5 @@ protocol WalletPickerViewInput: AnyObject {
     typealias DataFlow = WalletPickerDataFlow.View
     
     func setupInitialState(_ viewState: DataFlow.ViewState)
+    func updateView(_ viewState: DataFlow.ViewState)
 }
