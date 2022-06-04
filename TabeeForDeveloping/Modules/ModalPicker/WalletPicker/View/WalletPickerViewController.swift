@@ -16,6 +16,14 @@ final class WalletPickerViewController: UIViewController {
     private var pages: [Pages] = Pages.allCases
     private var currentIndex: Int = 0
     
+    private let pageControl: UIPageControl = {
+        $0.tintColor = UIColor.lightGray
+        $0.pageIndicatorTintColor = UIColor.lightGray
+        $0.currentPageIndicatorTintColor = UIColor.darkGray
+        $0.backgroundColor = UIColor.clear
+        
+        return $0
+    }(UIPageControl())
     
     // MARK: - Properties
     
@@ -30,7 +38,6 @@ final class WalletPickerViewController: UIViewController {
     
     
     private let vStackView: UIStackView = {
-       //$0.isUserInteractionEnabled = false
         $0.axis = .vertical
         $0.distribution = .fillProportionally
         $0.alignment = .center
@@ -71,9 +78,7 @@ final class WalletPickerViewController: UIViewController {
         setupViews()
         setupLayout()
         setupActions()
-        
-        setupPageController()
-        
+
         output.viewIsReady()
     }
     
@@ -100,6 +105,8 @@ private extension WalletPickerViewController {
     
     func setupViews() {
         view.addSubview(containerView)
+        
+        setupPageController()
 
         //containerView.addSubview(vStackView)
         //vStackView.addArrangedSubview(descriptionLabel)
@@ -109,6 +116,20 @@ private extension WalletPickerViewController {
     func setupLayout() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
+        }
+        
+        pageController.view.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(16)
+           // make.bottom.equalToSuperview().inset(25)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+            make.top.equalTo(pageController.view.snp.bottom).offset(16)
+            make.bottom.equalToSuperview().inset(25)
         }
         
 //        vStackView.snp.makeConstraints { make in
@@ -201,21 +222,15 @@ public class GrabberViewCustom: UIView {
 // MARK: - PageViewController
 extension WalletPickerViewController {
     private func setupPageController() {
-        
-        //self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
         pageController.dataSource = self
         pageController.delegate = self
         pageController.view.backgroundColor = .clear
-        //self.pageController.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width, height: 80)
+
         addChild(pageController)
        
         containerView.addSubview(pageController.view)
-        pageController.view.snp.makeConstraints { make in
-            make.height.equalTo(80)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().inset(25)
-        }
+        containerView.addSubview(pageControl)
         
         let initialVC = WalletPageViewController(with: pages[0])
         
@@ -223,17 +238,19 @@ extension WalletPickerViewController {
         
         pageController.didMove(toParent: self)
         
-        setupPageControll()
+        pageControl.numberOfPages = pages.count
+        //setupPageControll()
     }
     
-    func setupPageControll(){
-        let apperance = UIPageControl.appearance()
-        apperance.pageIndicatorTintColor = UIColor.lightGray
-        apperance.currentPageIndicatorTintColor = UIColor.darkGray
-        apperance.backgroundColor = UIColor.clear
-        
-        
-    }
+    
+    //конфиг для дефолтного пейдж контрола - но мы тут юзаем кастомный
+//    func setupPageControll(){
+//
+//        let apperance = UIPageControl.appearance()
+//        apperance.pageIndicatorTintColor = UIColor.lightGray
+//        apperance.currentPageIndicatorTintColor = UIColor.darkGray
+//        apperance.backgroundColor = UIColor.clear
+//    }
 }
 
 extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -282,5 +299,16 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return self.currentIndex
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        //let currentPage = pageViewController.viewControllers![0]
+        
+        guard let currentVC = pageViewController.viewControllers?.first as? WalletPageViewController else {
+            assertionFailure("error with index")
+            return
+        }
+
+        pageControl.currentPage = currentVC.page.index
     }
 }
