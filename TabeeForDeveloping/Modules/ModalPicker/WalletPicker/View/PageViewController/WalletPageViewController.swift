@@ -79,7 +79,8 @@ private extension WalletPageViewController {
     func createCircles() {
         page.colorCircles.forEach { singleCircle in
             let circleView: WalletCircleView = {
-                let singleCircleView = WalletCircleView(leftColor: singleCircle.leftColor, rightColor: singleCircle.rightColor, action: singleCircle.action)
+                
+                let singleCircleView = WalletCircleView(colorsData: singleCircle.dataForView, action: singleCircle.action)
                 return singleCircleView
             }()
             

@@ -251,7 +251,16 @@ extension WalletPickerViewController {
         containerView.addSubview(pageControl)
         
         let initialVC = WalletPageViewController(with: .init(pageIndex: 0, colorCircles: [
-            .init(id: "startValue", activeBorderColor: .clear, backgroundColor: .clear, leftColor: .clear, rightColor: .clear, inProgress: true, action: { })
+            .init(id: "-", dataForView: .init(
+                leftColor: .green,
+                rightColor: .green,
+                backgroundColoe: .green,
+                circleRadius: 15,
+                activityInProgress: true,
+                needBorder: false,
+                borderColor: .green,
+                cornerRadius: 3),
+                  action: { })
         ]))
         
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)

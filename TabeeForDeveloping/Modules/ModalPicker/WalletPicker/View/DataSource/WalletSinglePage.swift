@@ -12,14 +12,15 @@ struct WalletSinglePage {
     
     struct ColorCircle {
         let id: String
-
-        let activeBorderColor: UIColor
         
-        let backgroundColor:UIColor
-        let leftColor: UIColor
-        let rightColor: UIColor
-
-        let inProgress: Bool
+        let dataForView: WalletCircleView.ColorsData
+//
+//        let backgroundColor:UIColor
+//        let leftColor: UIColor
+//        let rightColor: UIColor
+//
+//        let activityInProgress: Bool //показывать ли на нем индикатор загрузки
+//        let needBorder: Bool //бордер вокруг
         
         let action: () -> Void
     }
