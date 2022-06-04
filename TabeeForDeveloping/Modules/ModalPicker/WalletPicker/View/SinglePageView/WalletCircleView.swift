@@ -9,6 +9,7 @@ import UIKit
 
 class WalletCircleView: UIView {
 
+    let activityIndicator = UIActivityIndicatorView()
     
     struct ColorsData {
         let leftColor: UIColor
@@ -41,8 +42,11 @@ class WalletCircleView: UIView {
         backgroundColor = .clear
         
         setupAction()
+        
+        setupActivityIndicator()
+ 
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -80,7 +84,12 @@ class WalletCircleView: UIView {
         self.layer.addSublayer(shapeLayerRight)
         
         self.layer.masksToBounds = true
+
+        if colorsData.activityInProgress {
+            setupActivityIndicator()
+        }
     }
+
 
     func setupAction() {
         addGestureRecognizer(
@@ -92,19 +101,29 @@ class WalletCircleView: UIView {
         action()
     }
     
-}
+    
+    func setupActivityIndicator() {
+        //activityIndicator.center = center
+        
+        //activityIndicator.center = CGPoint(x: bounds.width/2 + 1.5, y: bounds.height/2 + 1.5)
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.backgroundColor = (UIColor(white: 0.0, alpha: 0.3))
+        activityIndicator.style = .whiteLarge
+        //activityIndicator.layer.cornerRadius = 3
+        addSubview(activityIndicator)
+        
+        
+        //bringSubviewToFront(activityIndicator)
 
-
-extension Double {
-    var degreesToRadians: Double {
-        return self * .pi / 180
+        activityIndicator.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+            make.center.equalToSuperview().offset(1.5)
+            //make.center.equalToSuperview()
+        }
+        
+        activityIndicator.startAnimating()
     }
 }
-extension BinaryInteger {
-    var degreesToRadians: CGFloat { CGFloat(self) * .pi / 180 }
-}
 
-extension FloatingPoint {
-    var degreesToRadians: Self { self * .pi / 180 }
-    var radiansToDegrees: Self { self * 180 / .pi }
-}
+

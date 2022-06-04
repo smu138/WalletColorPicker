@@ -279,7 +279,7 @@ extension WalletPickerViewController {
         
         pageControl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
             make.top.equalTo(pageController.view.snp.bottom).offset(16)
             make.bottom.equalToSuperview().inset(25)
         }

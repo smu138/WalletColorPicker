@@ -14,7 +14,7 @@ class WalletPageViewController: UIViewController {
     
     let page: WalletSinglePage
     
-    let containerView: UIView = {
+    private let containerView: UIView = {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 25
         return $0
@@ -29,8 +29,12 @@ class WalletPageViewController: UIViewController {
         return $0
     }(UIStackView())
     
-    
-    
+    private let loadingView: UIView = {
+        $0.backgroundColor = .red
+        $0.layer.cornerRadius = 5
+        return $0
+    }(UIView())
+
     init(with page: WalletSinglePage) {
         self.page = page
 
@@ -59,8 +63,8 @@ class WalletPageViewController: UIViewController {
 
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            make.height.equalTo(40)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
         }
 
@@ -78,6 +82,7 @@ class WalletPageViewController: UIViewController {
 private extension WalletPageViewController {
     func createCircles() {
         page.colorCircles.forEach { singleCircle in
+
             let circleView: WalletCircleView = {
                 
                 let singleCircleView = WalletCircleView(colorsData: singleCircle.dataForView, action: singleCircle.action)
@@ -85,11 +90,14 @@ private extension WalletPageViewController {
             }()
             
             circleView.snp.makeConstraints { make in
-                make.width.height.equalTo(40).priority(999)
+                make.width.height.equalTo(50).priority(999)
             }
             
+//            if singleCircle.dataForView.activityInProgress {
+//                circleView.addActivityIndicator()
+//            }
+            
             hStackView.addArrangedSubview(circleView)
-
         }
     }
 }
