@@ -60,11 +60,8 @@ class WalletPageViewController: UIViewController {
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(40)
-            //make.center.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
-            
-            //make.top.bottom.equalToSuperview()
         }
 
         hStackView.snp.makeConstraints { make in
@@ -82,12 +79,12 @@ private extension WalletPageViewController {
     func createCircles() {
         page.colorCircles.forEach { singleCircle in
             let circleView: WalletCircleView = {
-                let singleCircleView = WalletCircleView(leftColor: singleCircle.leftColor, rightColor: singleCircle.rightColor)
+                let singleCircleView = WalletCircleView(leftColor: singleCircle.leftColor, rightColor: singleCircle.rightColor, action: singleCircle.action)
                 return singleCircleView
             }()
             
             circleView.snp.makeConstraints { make in
-                make.width.height.equalTo(30)
+                make.width.height.equalTo(40).priority(999)
             }
             
             hStackView.addArrangedSubview(circleView)

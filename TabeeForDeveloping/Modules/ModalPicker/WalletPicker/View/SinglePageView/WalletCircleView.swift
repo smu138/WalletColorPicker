@@ -8,6 +8,8 @@
 import UIKit
 
 class WalletCircleView: UIView {
+    
+    let action: () -> ()
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -19,13 +21,16 @@ class WalletCircleView: UIView {
     let leftColor: UIColor
     let rightColor: UIColor
     
-    init(leftColor: UIColor, rightColor: UIColor) {
+    init(leftColor: UIColor, rightColor: UIColor, action: @escaping () -> ()) {
         self.leftColor = leftColor
         self.rightColor = rightColor
+        self.action = action
 
         super.init(frame: .zero)
         
         backgroundColor = .clear
+        
+        setupAction()
     }
     
 //    override init(frame: CGRect) {
@@ -45,5 +50,16 @@ class WalletCircleView: UIView {
         UIColor.red.setFill()
         context.fill(bounds)
       }
+    
+    func setupAction() {
+        addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+        )
+
+    }
+    
+    @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
+        action()
+    }
 
 }
