@@ -40,36 +40,58 @@ extension UIView {
     }
     
     func addActivityIndicator() {
-        
-//
-//        let uiView = UIView(frame: self.frame)
-//
-//        uiView.backgroundColor = .black
-//        uiView.alpha = 0.8
-//
-//        addSubview(uiView)
-        
-        //let child = ActivityIndicator()
-        //self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        activityIndicator.center = center
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.backgroundColor = (UIColor(white: 0.0, alpha: 0.3))
         activityIndicator.style = .whiteLarge
         //activityIndicator.layer.cornerRadius = 3
         addSubview(activityIndicator)
-        
-        
-        //bringSubviewToFront(activityIndicator)
 
-//        activityIndicator.snp.makeConstraints { make in
-//            make.width.height.equalTo(10)
-//            make.center.equalToSuperview()
-//        }
+        activityIndicator.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+            make.center.equalToSuperview().offset(1.5)
+            //make.center.equalToSuperview()
+        }
         
         activityIndicator.startAnimating()
-        
+    }
+    
+    func addHud() {
+        var hudView = self.viewWithTag(ActivityIndicator.viewHUDTag)
 
+        if hudView != nil {
+            hudView!.removeFromSuperview()
+        }
+
+        hudView = UIView(frame: self.bounds)
+        hudView!.alpha = 0
+        hudView!.tag = ActivityIndicator.viewHUDTag
+
+//        if inRect {
+//            hudView?.layer.cornerRadius = 10
+//        }
+
+        self.addSubview(hudView!)
+        hudView!.snp.makeConstraints { make in
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        }
+
+        let indicator = UIActivityIndicatorView()
+        hudView!.addSubview(indicator)
+        indicator.snp.makeConstraints({ make in
+            make.center.equalToSuperview()
+        })
+        indicator.startAnimating()
+
+        hudView?.isHidden = false
+        //hudView?.backgroundColor = .clear
+
+        hudView?.setNeedsLayout()
+        hudView?.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.15, animations: {
+            hudView?.alpha = 1.0
+        })
     }
     
     func removeAtivityIndicator() {

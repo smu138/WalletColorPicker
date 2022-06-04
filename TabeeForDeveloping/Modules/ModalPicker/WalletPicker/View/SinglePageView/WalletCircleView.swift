@@ -42,9 +42,6 @@ class WalletCircleView: UIView {
         backgroundColor = .clear
         
         setupAction()
-        
-        setupActivityIndicator()
- 
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -86,7 +83,7 @@ class WalletCircleView: UIView {
         self.layer.masksToBounds = true
 
         if colorsData.activityInProgress {
-            setupActivityIndicator()
+            addActivityIndicator()
         }
     }
 
@@ -99,30 +96,6 @@ class WalletCircleView: UIView {
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
         action()
-    }
-    
-    
-    func setupActivityIndicator() {
-        //activityIndicator.center = center
-        
-        //activityIndicator.center = CGPoint(x: bounds.width/2 + 1.5, y: bounds.height/2 + 1.5)
-        
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.backgroundColor = (UIColor(white: 0.0, alpha: 0.3))
-        activityIndicator.style = .whiteLarge
-        //activityIndicator.layer.cornerRadius = 3
-        addSubview(activityIndicator)
-        
-        
-        //bringSubviewToFront(activityIndicator)
-
-        activityIndicator.snp.makeConstraints { make in
-            make.width.height.equalToSuperview()
-            make.center.equalToSuperview().offset(1.5)
-            //make.center.equalToSuperview()
-        }
-        
-        activityIndicator.startAnimating()
     }
 }
 
