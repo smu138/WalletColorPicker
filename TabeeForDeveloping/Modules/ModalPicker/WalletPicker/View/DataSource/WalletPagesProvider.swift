@@ -11,6 +11,24 @@ struct WalletPagesProvider {
     
     var pages: [WalletSinglePage] = []
     
+    func makeActive(walletCircleView: WalletCircleView) {
+        //walletCircleView.setStatus(isActive: true)
+        let colorsData = WalletCircleView.ColorsData(
+            leftColor: walletCircleView.colorsData.leftColor,
+            rightColor: walletCircleView.colorsData.rightColor,
+            backgroundColoe: walletCircleView.colorsData.backgroundColoe,
+            circleRadius: walletCircleView.colorsData.circleRadius,
+            activityInProgress: walletCircleView.colorsData.activityInProgress == true ? false : true,
+            needBorder: walletCircleView.colorsData.needBorder == true ? false : true,
+            borderColor: walletCircleView.colorsData.borderColor,
+            borderWidth: walletCircleView.colorsData.borderWidth,
+            cornerRadius: walletCircleView.colorsData.cornerRadius)
+        
+        walletCircleView.colorsData = colorsData
+        //walletCircleView.layoutIfNeeded()
+        walletCircleView.draw(walletCircleView.frame)
+    }
+    
     //это будет заполняться снаружи - поэтому эти данные будут уходить на сервер - к примеру id этой ячейки
     mutating func makePages() {
         pages = [
@@ -26,8 +44,8 @@ struct WalletPagesProvider {
                         borderColor: .blue,
                         borderWidth: 2,
                         cornerRadius: 5),
-                      action: {
-                          print("тап на кружочке id1")
+                      action: { [self] walletCircleView in
+                          self.makeActive(walletCircleView: walletCircleView)
                       }),
                 
                     .init(id: "id15555",
@@ -41,8 +59,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id15555")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           }),
                 
                     .init(id: "id13312",
@@ -56,8 +74,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id13312")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           }),
                 
                     .init(id: "id55",
@@ -71,8 +89,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id55")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           }),
                 
                     .init(id: "id1112",
@@ -86,8 +104,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id1112")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           })
                 
             ]),
@@ -104,8 +122,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id1")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           }),
                     
                         .init(id: "id15555",
@@ -119,8 +137,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id15555")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id13312",
@@ -134,8 +152,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id13312")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id55",
@@ -149,8 +167,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id55")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id1112",
@@ -164,8 +182,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id1112")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               })
                 ]),
             
@@ -181,8 +199,8 @@ struct WalletPagesProvider {
                             borderColor: .blue,
                             borderWidth: 2,
                             cornerRadius: 5),
-                          action: {
-                              print("тап на кружочке id1")
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
                           }),
                     
                         .init(id: "id15555",
@@ -196,8 +214,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id15555")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id13312",
@@ -211,8 +229,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id13312")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id55",
@@ -226,8 +244,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id55")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               }),
                     
                         .init(id: "id1112",
@@ -241,8 +259,8 @@ struct WalletPagesProvider {
                                 borderColor: .blue,
                                 borderWidth: 2,
                                 cornerRadius: 5),
-                              action: {
-                                  print("тап на кружочке id1112")
+                              action: { [self] walletCircleView in
+                                  self.makeActive(walletCircleView: walletCircleView)
                               })
                 ])
         ]

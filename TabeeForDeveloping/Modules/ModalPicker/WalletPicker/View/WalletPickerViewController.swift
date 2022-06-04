@@ -261,7 +261,7 @@ extension WalletPickerViewController {
                 borderColor: .green,
                 borderWidth: 2,
                 cornerRadius: 3),
-                  action: { })
+                  action: { _ in })
         ]))
         
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)

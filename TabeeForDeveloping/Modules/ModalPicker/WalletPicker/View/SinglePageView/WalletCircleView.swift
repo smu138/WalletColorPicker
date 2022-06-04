@@ -28,11 +28,11 @@ class WalletCircleView: UIView {
         let cornerRadius: CGFloat
     }
     
-    let action: () -> ()
+    let action: (_ walletCircle: WalletCircleView) -> Void
 
-    let colorsData: ColorsData
+    var colorsData: ColorsData //var чтобы можно было менять извне
     
-    init(colorsData: ColorsData, action: @escaping () -> ()) {
+    init(colorsData: ColorsData, action: @escaping (_ walletCircle: WalletCircleView) -> Void) {
         self.colorsData = colorsData
 
         self.action = action
@@ -95,7 +95,16 @@ class WalletCircleView: UIView {
     }
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
-        action()
+        action(self)
+    }
+    
+    func setStatus(isActive: Bool) {
+        
+        removeAtivityIndicator()
+        
+        if isActive {
+            addActivityIndicator()
+        }
     }
 }
 

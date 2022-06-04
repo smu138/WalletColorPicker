@@ -14,7 +14,7 @@ struct WalletSinglePage {
         let id: String
         let dataForView: WalletCircleView.ColorsData
         
-        let action: () -> Void
+        let action: (_ walletView: WalletCircleView) -> Void
     }
     
     let colorCircles: [ColorCircle]

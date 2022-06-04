@@ -39,7 +39,7 @@ extension UIView {
         viewWithTag(ActivityIndicator.viewHUDTag)
     }
     
-    func addActivityIndicator() {
+    func addActivityIndicator1() {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.backgroundColor = (UIColor(white: 0.0, alpha: 0.3))
@@ -56,7 +56,7 @@ extension UIView {
         activityIndicator.startAnimating()
     }
     
-    func addHud() {
+    func addActivityIndicator() {
         var hudView = self.viewWithTag(ActivityIndicator.viewHUDTag)
 
         if hudView != nil {
@@ -73,14 +73,20 @@ extension UIView {
 
         self.addSubview(hudView!)
         hudView!.snp.makeConstraints { make in
-            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            make.edges.equalToSuperview()
         }
 
         let indicator = UIActivityIndicatorView()
+        indicator.backgroundColor = (UIColor(white: 0.0, alpha: 0.5))
+        
         hudView!.addSubview(indicator)
-        indicator.snp.makeConstraints({ make in
-            make.center.equalToSuperview()
-        })
+        
+        indicator.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+            make.center.equalToSuperview()//.offset(1.5)
+            //make.center.equalToSuperview()
+        }
+        
         indicator.startAnimating()
 
         hudView?.isHidden = false
