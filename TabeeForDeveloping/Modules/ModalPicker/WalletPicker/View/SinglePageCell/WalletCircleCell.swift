@@ -35,6 +35,7 @@ class WalletCircleCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setupStyle()
+        setupAction()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -70,18 +71,15 @@ class WalletCircleCell: UICollectionViewCell {
         shapeLayerLeft.fillColor = colorsData.rightColor.cgColor
 
         
-        self.layer.addSublayer(shapeLayerLeft)
-        self.layer.addSublayer(shapeLayerRight)
+        layer.addSublayer(shapeLayerLeft)
+        layer.addSublayer(shapeLayerRight)
         
-        self.layer.masksToBounds = true
+        layer.masksToBounds = true
 
         if colorsData.activityInProgress {
             addActivityIndicator()
         }
     }
-
-
-
 }
 
 // MARK: - Actions

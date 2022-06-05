@@ -157,7 +157,7 @@ struct WalletPagesProvider {
                           dataForView: .init(
                             leftColor: .orange,
                             rightColor: .green,
-                            backgroundColoe: .brown,
+                            backgroundColoe: .cyan,
                             circleRadius: 15,
                             activityInProgress: false,
                             needBorder: true,
@@ -172,7 +172,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .cyan,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: false,
@@ -187,7 +187,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .cyan,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: false,
@@ -202,7 +202,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .cyan,
                                 circleRadius: 15,
                                 activityInProgress: true,
                                 needBorder: true,
@@ -217,7 +217,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .cyan,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: true,
@@ -231,7 +231,7 @@ struct WalletPagesProvider {
                           dataForView: .init(
                             leftColor: .orange,
                             rightColor: .green,
-                            backgroundColoe: .brown,
+                            backgroundColoe: .cyan,
                             circleRadius: 15,
                             activityInProgress: false,
                             needBorder: false,
@@ -246,7 +246,7 @@ struct WalletPagesProvider {
                           dataForView: .init(
                             leftColor: .orange,
                             rightColor: .green,
-                            backgroundColoe: .brown,
+                            backgroundColoe: .cyan,
                             circleRadius: 15,
                             activityInProgress: true,
                             needBorder: true,
@@ -261,7 +261,7 @@ struct WalletPagesProvider {
                           dataForView: .init(
                             leftColor: .orange,
                             rightColor: .green,
-                            backgroundColoe: .brown,
+                            backgroundColoe: .cyan,
                             circleRadius: 15,
                             activityInProgress: false,
                             needBorder: true,
@@ -278,7 +278,7 @@ struct WalletPagesProvider {
                           dataForView: .init(
                             leftColor: .orange,
                             rightColor: .green,
-                            backgroundColoe: .brown,
+                            backgroundColoe: .gray,
                             circleRadius: 15,
                             activityInProgress: false,
                             needBorder: true,
@@ -293,7 +293,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .gray,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: false,
@@ -308,7 +308,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .gray,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: false,
@@ -323,7 +323,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .gray,
                                 circleRadius: 15,
                                 activityInProgress: true,
                                 needBorder: true,
@@ -338,7 +338,7 @@ struct WalletPagesProvider {
                               dataForView: .init(
                                 leftColor: .orange,
                                 rightColor: .green,
-                                backgroundColoe: .brown,
+                                backgroundColoe: .gray,
                                 circleRadius: 15,
                                 activityInProgress: false,
                                 needBorder: true,

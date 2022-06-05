@@ -21,15 +21,6 @@ class WalletPageViewController: UIViewController {
         return $0
     }(UIView())
     
-//    private let hStackView: UIStackView = {
-//        //$0.isUserInteractionEnabled = false
-//        $0.axis = .horizontal
-//        $0.alignment = .center
-//        $0.distribution = .equalSpacing
-//        $0.spacing = 8
-//        return $0
-//    }(UIStackView())
-    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -67,7 +58,7 @@ class WalletPageViewController: UIViewController {
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(50)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(8)
             make.centerY.equalToSuperview()
         }
 
@@ -80,29 +71,9 @@ class WalletPageViewController: UIViewController {
     
     func applyStyles() { }
     
-}
-
-private extension WalletPageViewController {
     func setupCollectionCircles(with page: WalletSinglePageModel) {
         collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
         collectionAdapter?.updateCollection(with: page.colorCircles)
-        
-        
-//        page.colorCircles.forEach { singleCircle in
-//
-//            let circleView: WalletCircleCell = {
-//
-//                let singleCircleView = WalletCircleCell(colorsData: singleCircle.dataForView, action: singleCircle.action)
-//                return singleCircleView
-//            }()
-//
-//            circleView.snp.makeConstraints { make in
-//                make.width.height.equalTo(50).priority(999)
-//            }
-//
-//            hStackView.addArrangedSubview(circleView)
-//        }
-        
-        
     }
+    
 }

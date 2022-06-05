@@ -122,8 +122,6 @@ extension WalletPickerViewController: WalletPickerViewInput {
             //TODO: отобразить ошибку
             ()
         }
-        
-        //pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
     }
     
     func setupInitialState(_ viewState: WalletPickerDataFlow.View.ViewState) {
@@ -248,7 +246,7 @@ extension WalletPickerViewController {
         addChild(pageController)
        
         containerView.addSubview(pageController.view)
-        containerView.addSubview(pageControl)
+        //containerView.addSubview(pageControl)
         
         let initialVC = WalletPageViewController(with: .init(pageIndex: 0, colorCircles: [
             .init(id: "-", dataForView: .init(
@@ -272,28 +270,32 @@ extension WalletPickerViewController {
         
         pageController.view.snp.makeConstraints { make in
             make.height.equalTo(80)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(8)
             make.top.equalToSuperview().offset(16)
-           // make.bottom.equalToSuperview().inset(25)
-        }
-        
-        pageControl.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(20)
-            make.top.equalTo(pageController.view.snp.bottom).offset(16)
+            
+            //это закомментить когда будет кастомный пейдж контрол ниже
             make.bottom.equalToSuperview().inset(25)
         }
+        
+//        pageControl.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.height.equalTo(20)
+//            make.top.equalTo(pageController.view.snp.bottom).offset(16)
+//            make.bottom.equalToSuperview().inset(25)
+//        }
+        
+        setupDefaultPageControll()
     }
     
     
     //конфиг для дефолтного пейдж контрола - но мы тут юзаем кастомный - поэтоу пока закомментил
-//    func setupPageControll(){
-//
-//        let apperance = UIPageControl.appearance()
-//        apperance.pageIndicatorTintColor = UIColor.lightGray
-//        apperance.currentPageIndicatorTintColor = UIColor.darkGray
-//        apperance.backgroundColor = UIColor.clear
-//    }
+    func setupDefaultPageControll(){
+
+        let apperance = UIPageControl.appearance()
+        apperance.pageIndicatorTintColor = UIColor.lightGray
+        apperance.currentPageIndicatorTintColor = UIColor.darkGray
+        apperance.backgroundColor = UIColor.clear
+    }
     
     func createWalletPageController() -> [WalletPageViewController] {
         let pages: [WalletPageViewController] = pages.map { singlePageModel in
@@ -354,14 +356,13 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
         return self.currentIndex
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        //let currentPage = pageViewController.viewControllers![0]
-        
-        guard let currentVC = pageViewController.viewControllers?.first as? WalletPageViewController else {
-            assertionFailure("error with index")
-            return
-        }
-
-        pageControl.currentPage = currentVC.page.pageIndex
-    }
+//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+//
+//        guard let currentVC = pageViewController.viewControllers?.first as? WalletPageViewController else {
+//            assertionFailure("error with index")
+//            return
+//        }
+//
+//        pageControl.currentPage = currentVC.page.pageIndex
+//    }
 }
