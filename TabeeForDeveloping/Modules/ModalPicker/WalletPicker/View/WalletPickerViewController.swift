@@ -184,13 +184,13 @@ class IntrinsicPanelLayout: FloatingPanelLayout {
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         return [
             .full: FloatingPanelIntrinsicLayoutAnchor(absoluteOffset: 0, referenceGuide: .safeArea)
-            //.half: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.5, referenceGuide: .safeArea),
+            //.half: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.5, referenceGuide: .safeArea)
         ]
     }
     
     func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
             switch state {
-            case .full: return 0.0
+            case .full: return 0.05
             default: return 0.0
             }
     }

@@ -97,15 +97,6 @@ class WalletCircleView: UIView {
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
         action(self)
     }
-    
-    func setStatus(isActive: Bool) {
-        
-        removeAtivityIndicator()
-        
-        if isActive {
-            addActivityIndicator()
-        }
-    }
 }
 
 

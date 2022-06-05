@@ -12,7 +12,6 @@ struct WalletPagesProvider {
     var pages: [WalletSinglePage] = []
     
     func makeActive(walletCircleView: WalletCircleView) {
-        //walletCircleView.setStatus(isActive: true)
         let colorsData = WalletCircleView.ColorsData(
             leftColor: walletCircleView.colorsData.leftColor,
             rightColor: walletCircleView.colorsData.rightColor,
@@ -25,7 +24,6 @@ struct WalletPagesProvider {
             cornerRadius: walletCircleView.colorsData.cornerRadius)
         
         walletCircleView.colorsData = colorsData
-        //walletCircleView.layoutIfNeeded()
         walletCircleView.draw(walletCircleView.frame)
     }
     

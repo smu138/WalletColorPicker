@@ -32,8 +32,10 @@ extension ViewController {
         fpc.set(contentViewController: walletViewController)
 
         fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
+        fpc.backdropView.dismissalTapGestureRecognizer.isEnabled = true
         
         fpc.layout = IntrinsicPanelLayout()
+        fpc.delegate = self
         //fpc.behavior = CustomPanelBehavior()
         
         self.present(fpc, animated: true, completion: nil)
@@ -93,3 +95,6 @@ extension ViewController: WalletPickerModuleOutput {
 }
 
 
+extension ViewController: FloatingPanelControllerDelegate {
+    
+}
