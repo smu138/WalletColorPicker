@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C744ECB3DA56ECC59A144E7B /* Pods_TabeeForDeveloping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */; };
+		D59AE1B6284CF5430017778E /* WalletPagesAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59AE1B5284CF5430017778E /* WalletPagesAdapter.swift */; };
 		D59F3D9A284B8F190059A432 /* WalletPagesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */; };
-		D59F3D9F284B90F40059A432 /* WalletCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3D9E284B90F40059A432 /* WalletCircleView.swift */; };
-		D59F3DA4284B93870059A432 /* WalletSinglePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3DA3284B93870059A432 /* WalletSinglePage.swift */; };
+		D59F3D9F284B90F40059A432 /* WalletCircleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3D9E284B90F40059A432 /* WalletCircleCell.swift */; };
+		D59F3DA4284B93870059A432 /* WalletSinglePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3DA3284B93870059A432 /* WalletSinglePageModel.swift */; };
 		D59F3DA7284BC08E0059A432 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3DA6284BC08D0059A432 /* ActivityIndicator.swift */; };
 		D59F3DA9284BCD8E0059A432 /* Math+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F3DA8284BCD8E0059A432 /* Math+.swift */; };
 		D5FA5A4C2848F7C00094688D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA5A4B2848F7C00094688D /* AppDelegate.swift */; };
@@ -38,9 +39,10 @@
 /* Begin PBXFileReference section */
 		97CFFD880F60C108EEDE6F57 /* Pods-TabeeForDeveloping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabeeForDeveloping.release.xcconfig"; path = "Target Support Files/Pods-TabeeForDeveloping/Pods-TabeeForDeveloping.release.xcconfig"; sourceTree = "<group>"; };
 		C5D810D8A03FAC88F450F7B9 /* Pods_TabeeForDeveloping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabeeForDeveloping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D59AE1B5284CF5430017778E /* WalletPagesAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPagesAdapter.swift; sourceTree = "<group>"; };
 		D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPagesProvider.swift; sourceTree = "<group>"; };
-		D59F3D9E284B90F40059A432 /* WalletCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCircleView.swift; sourceTree = "<group>"; };
-		D59F3DA3284B93870059A432 /* WalletSinglePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSinglePage.swift; sourceTree = "<group>"; };
+		D59F3D9E284B90F40059A432 /* WalletCircleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCircleCell.swift; sourceTree = "<group>"; };
+		D59F3DA3284B93870059A432 /* WalletSinglePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSinglePageModel.swift; sourceTree = "<group>"; };
 		D59F3DA6284BC08D0059A432 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D59F3DA8284BCD8E0059A432 /* Math+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+.swift"; sourceTree = "<group>"; };
 		D5FA5A482848F7C00094688D /* TabeeForDeveloping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabeeForDeveloping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,19 +99,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D59F3D9B284B90990059A432 /* SinglePageView */ = {
+		D59F3D9B284B90990059A432 /* SinglePageCell */ = {
 			isa = PBXGroup;
 			children = (
-				D59F3D9E284B90F40059A432 /* WalletCircleView.swift */,
+				D59F3D9E284B90F40059A432 /* WalletCircleCell.swift */,
 			);
-			path = SinglePageView;
+			path = SinglePageCell;
 			sourceTree = "<group>";
 		};
 		D59F3DA0284B93550059A432 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				D59F3D99284B8F190059A432 /* WalletPagesProvider.swift */,
-				D59F3DA3284B93870059A432 /* WalletSinglePage.swift */,
+				D59F3DA3284B93870059A432 /* WalletSinglePageModel.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -217,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				D59F3DA0284B93550059A432 /* DataSource */,
-				D59F3D9B284B90990059A432 /* SinglePageView */,
+				D59F3D9B284B90990059A432 /* SinglePageCell */,
 				D5FA5A882849112B0094688D /* PageViewController */,
 				D5FA5A6F2848FB700094688D /* WalletPickerViewInput.swift */,
 				D5FA5A712848FB700094688D /* WalletPickerViewOutput.swift */,
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FA5A89284911450094688D /* WalletPageViewController.swift */,
+				D59AE1B5284CF5430017778E /* WalletPagesAdapter.swift */,
 			);
 			path = PageViewController;
 			sourceTree = "<group>";
@@ -383,8 +386,9 @@
 				D5FA5A862848FB700094688D /* WalletPickerInteractorInput.swift in Sources */,
 				D5FA5A7D2848FB700094688D /* WalletPickerModuleInput.swift in Sources */,
 				D5FA5A7F2848FB700094688D /* WalletPickerModuleOutput.swift in Sources */,
-				D59F3DA4284B93870059A432 /* WalletSinglePage.swift in Sources */,
-				D59F3D9F284B90F40059A432 /* WalletCircleView.swift in Sources */,
+				D59AE1B6284CF5430017778E /* WalletPagesAdapter.swift in Sources */,
+				D59F3DA4284B93870059A432 /* WalletSinglePageModel.swift in Sources */,
+				D59F3D9F284B90F40059A432 /* WalletCircleCell.swift in Sources */,
 				D5FA5A4E2848F7C00094688D /* SceneDelegate.swift in Sources */,
 				D5FA5A872848FB700094688D /* WalletPickerRouter.swift in Sources */,
 				D5FA5A7C2848FB700094688D /* WalletPickerPresenter.swift in Sources */,

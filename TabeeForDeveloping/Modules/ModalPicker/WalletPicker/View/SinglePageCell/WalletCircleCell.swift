@@ -7,17 +7,16 @@
 
 import UIKit
 
-class WalletCircleView: UIView {
-
-    let activityIndicator = UIActivityIndicatorView()
+class WalletCircleCell: UICollectionViewCell {
+    
+    static let reuseId: String = String(describing: WalletCircleCell.self)
     
     struct ColorsData {
         let leftColor: UIColor
         let rightColor: UIColor
         
         let backgroundColoe: UIColor
-        
-        
+
         let circleRadius: CGFloat //радиус внутреннего круга
         
         let activityInProgress: Bool //показывать ли на нем индикатор загрузки
@@ -28,20 +27,14 @@ class WalletCircleView: UIView {
         let cornerRadius: CGFloat
     }
     
-    let action: (_ walletCircle: WalletCircleView) -> Void
+    var action: ((_ walletCircle: WalletCircleCell) -> Void)?
 
-    var colorsData: ColorsData //var чтобы можно было менять извне
+    var colorsData: ColorsData!
     
-    init(colorsData: ColorsData, action: @escaping (_ walletCircle: WalletCircleView) -> Void) {
-        self.colorsData = colorsData
-
-        self.action = action
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        super.init(frame: .zero)
-        
-        backgroundColor = .clear
-        
-        setupAction()
+        setupStyle()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -88,6 +81,12 @@ class WalletCircleView: UIView {
     }
 
 
+
+}
+
+// MARK: - Actions
+
+extension WalletCircleCell {
     func setupAction() {
         addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
@@ -95,8 +94,27 @@ class WalletCircleView: UIView {
     }
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
-        action(self)
+        action?(self)
     }
 }
 
+
+// MARK: - Cell configure
+
+extension WalletCircleCell {
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    func setupStyle() {
+        backgroundColor = .clear
+    }
+    
+    func configure(colorsData: ColorsData, action: @escaping (_ walletCircle: WalletCircleCell) -> Void) {
+        self.colorsData = colorsData
+
+        self.action = action
+    }
+}
 

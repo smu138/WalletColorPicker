@@ -12,7 +12,8 @@ import SnapKit
 
 class WalletPageViewController: UIViewController {
     
-    let page: WalletSinglePage
+    let page: WalletSinglePageModel //поддержка pageViewController
+    private var collectionAdapter: WalletPagesAdapter?
     
     private let containerView: UIView = {
         $0.backgroundColor = .white
@@ -20,22 +21,24 @@ class WalletPageViewController: UIViewController {
         return $0
     }(UIView())
     
-    private let hStackView: UIStackView = {
-        //$0.isUserInteractionEnabled = false
-        $0.axis = .horizontal
-        $0.alignment = .center
-        $0.distribution = .equalSpacing
-        $0.spacing = 8
-        return $0
-    }(UIStackView())
+//    private let hStackView: UIStackView = {
+//        //$0.isUserInteractionEnabled = false
+//        $0.axis = .horizontal
+//        $0.alignment = .center
+//        $0.distribution = .equalSpacing
+//        $0.spacing = 8
+//        return $0
+//    }(UIStackView())
     
-    private let loadingView: UIView = {
-        $0.backgroundColor = .red
-        $0.layer.cornerRadius = 5
-        return $0
-    }(UIView())
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
 
-    init(with page: WalletSinglePage) {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
+
+    init(with page: WalletSinglePageModel) {
         self.page = page
 
         super.init(nibName: nil, bundle: nil)
@@ -45,7 +48,7 @@ class WalletPageViewController: UIViewController {
         applyStyles()
         setupActions()
         
-        createCircles()
+        setupCollectionCircles(with: page)
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +61,7 @@ class WalletPageViewController: UIViewController {
     
     func setupView() {
         view.addSubview(containerView)
-        containerView.addSubview(hStackView)
+        containerView.addSubview(collectionView)
     }
 
     func setupConstraints() {
@@ -68,7 +71,7 @@ class WalletPageViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
 
-        hStackView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
@@ -80,24 +83,26 @@ class WalletPageViewController: UIViewController {
 }
 
 private extension WalletPageViewController {
-    func createCircles() {
-        page.colorCircles.forEach { singleCircle in
-
-            let circleView: WalletCircleView = {
-                
-                let singleCircleView = WalletCircleView(colorsData: singleCircle.dataForView, action: singleCircle.action)
-                return singleCircleView
-            }()
-            
-            circleView.snp.makeConstraints { make in
-                make.width.height.equalTo(50).priority(999)
-            }
-            
-//            if singleCircle.dataForView.activityInProgress {
-//                circleView.addActivityIndicator()
+    func setupCollectionCircles(with page: WalletSinglePageModel) {
+        collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
+        collectionAdapter?.updateCollection(with: page.colorCircles)
+        
+        
+//        page.colorCircles.forEach { singleCircle in
+//
+//            let circleView: WalletCircleCell = {
+//
+//                let singleCircleView = WalletCircleCell(colorsData: singleCircle.dataForView, action: singleCircle.action)
+//                return singleCircleView
+//            }()
+//
+//            circleView.snp.makeConstraints { make in
+//                make.width.height.equalTo(50).priority(999)
 //            }
-            
-            hStackView.addArrangedSubview(circleView)
-        }
+//
+//            hStackView.addArrangedSubview(circleView)
+//        }
+        
+        
     }
 }

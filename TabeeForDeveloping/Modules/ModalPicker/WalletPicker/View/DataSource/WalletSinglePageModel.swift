@@ -7,14 +7,14 @@
 
 import UIKit
 
-struct WalletSinglePage {
+struct WalletSinglePageModel {
     let pageIndex: Int //for page control
     
     struct ColorCircle {
         let id: String
-        let dataForView: WalletCircleView.ColorsData
+        let dataForView: WalletCircleCell.ColorsData
         
-        let action: (_ walletView: WalletCircleView) -> Void
+        let action: (_ walletView: WalletCircleCell) -> Void
     }
     
     let colorCircles: [ColorCircle]

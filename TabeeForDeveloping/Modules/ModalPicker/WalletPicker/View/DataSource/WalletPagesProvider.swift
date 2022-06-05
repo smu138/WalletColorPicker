@@ -9,10 +9,10 @@ import UIKit
 
 struct WalletPagesProvider {
     
-    var pages: [WalletSinglePage] = []
+    var pages: [WalletSinglePageModel] = []
     
-    func makeActive(walletCircleView: WalletCircleView) {
-        let colorsData = WalletCircleView.ColorsData(
+    func makeActive(walletCircleView: WalletCircleCell) {
+        let colorsData = WalletCircleCell.ColorsData(
             leftColor: walletCircleView.colorsData.leftColor,
             rightColor: walletCircleView.colorsData.rightColor,
             backgroundColoe: walletCircleView.colorsData.backgroundColoe,
@@ -104,7 +104,51 @@ struct WalletPagesProvider {
                             cornerRadius: 5),
                           action: { [self] walletCircleView in
                               self.makeActive(walletCircleView: walletCircleView)
-                          })
+                          }),
+                .init(id: "id13312",
+                      dataForView: .init(
+                        leftColor: .orange,
+                        rightColor: .green,
+                        backgroundColoe: .brown,
+                        circleRadius: 15,
+                        activityInProgress: false,
+                        needBorder: false,
+                        borderColor: .blue,
+                        borderWidth: 2,
+                        cornerRadius: 5),
+                      action: { [self] walletCircleView in
+                          self.makeActive(walletCircleView: walletCircleView)
+                      }),
+            
+                .init(id: "id55",
+                      dataForView: .init(
+                        leftColor: .orange,
+                        rightColor: .green,
+                        backgroundColoe: .brown,
+                        circleRadius: 15,
+                        activityInProgress: true,
+                        needBorder: true,
+                        borderColor: .blue,
+                        borderWidth: 2,
+                        cornerRadius: 5),
+                      action: { [self] walletCircleView in
+                          self.makeActive(walletCircleView: walletCircleView)
+                      }),
+            
+                .init(id: "id1112",
+                      dataForView: .init(
+                        leftColor: .orange,
+                        rightColor: .green,
+                        backgroundColoe: .brown,
+                        circleRadius: 15,
+                        activityInProgress: false,
+                        needBorder: true,
+                        borderColor: .blue,
+                        borderWidth: 2,
+                        cornerRadius: 5),
+                      action: { [self] walletCircleView in
+                          self.makeActive(walletCircleView: walletCircleView)
+                      })
                 
             ]),
             
@@ -182,7 +226,51 @@ struct WalletPagesProvider {
                                 cornerRadius: 5),
                               action: { [self] walletCircleView in
                                   self.makeActive(walletCircleView: walletCircleView)
-                              })
+                              }),
+                    .init(id: "id13312",
+                          dataForView: .init(
+                            leftColor: .orange,
+                            rightColor: .green,
+                            backgroundColoe: .brown,
+                            circleRadius: 15,
+                            activityInProgress: false,
+                            needBorder: false,
+                            borderColor: .blue,
+                            borderWidth: 2,
+                            cornerRadius: 5),
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
+                          }),
+                
+                    .init(id: "id55",
+                          dataForView: .init(
+                            leftColor: .orange,
+                            rightColor: .green,
+                            backgroundColoe: .brown,
+                            circleRadius: 15,
+                            activityInProgress: true,
+                            needBorder: true,
+                            borderColor: .blue,
+                            borderWidth: 2,
+                            cornerRadius: 5),
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
+                          }),
+                
+                    .init(id: "id1112",
+                          dataForView: .init(
+                            leftColor: .orange,
+                            rightColor: .green,
+                            backgroundColoe: .brown,
+                            circleRadius: 15,
+                            activityInProgress: false,
+                            needBorder: true,
+                            borderColor: .blue,
+                            borderWidth: 2,
+                            cornerRadius: 5),
+                          action: { [self] walletCircleView in
+                              self.makeActive(walletCircleView: walletCircleView)
+                          })
                 ]),
             
                 .init(pageIndex: 2, colorCircles: [

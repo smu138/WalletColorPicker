@@ -13,7 +13,7 @@ import FloatingPanel
 final class WalletPickerViewController: UIViewController {
     
     private var pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    private var pages: [WalletSinglePage] = []
+    private var pages: [WalletSinglePageModel] = []
     private var currentIndex: Int = 0
     
     private let pageControl: UIPageControl = {

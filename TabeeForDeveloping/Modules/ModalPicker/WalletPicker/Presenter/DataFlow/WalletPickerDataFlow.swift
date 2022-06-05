@@ -12,7 +12,7 @@ struct WalletPickerDataFlow {
     struct View {
         enum ViewState {
             case loading
-            case loaded(pages: [WalletSinglePage])
+            case loaded(pages: [WalletSinglePageModel])
             case error
         }
     }
@@ -20,7 +20,7 @@ struct WalletPickerDataFlow {
     struct Presenter {
         enum PagesState {
             case loading
-            case loaded(pages: [WalletSinglePage])
+            case loaded(pages: [WalletSinglePageModel])
             case error
         }
     }
