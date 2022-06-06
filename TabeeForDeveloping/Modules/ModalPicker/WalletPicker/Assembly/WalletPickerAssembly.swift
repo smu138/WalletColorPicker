@@ -9,31 +9,41 @@
 final class WalletPickerAssembly {
     
     private weak var output: WalletPickerModuleOutput?
+    private weak var input: WalletPickerModuleInput?
+    
     //private var transition: Transition?
     
     init(
-        output: WalletPickerModuleOutput? = nil
+        output: WalletPickerModuleOutput? = nil,
+        input: WalletPickerModuleInput? = nil
        // transition: Transition? = nil
     ) {
         self.output = output
+        self.input = input
        // self.transition = transition
     }
     
-    func createModule() -> WalletPickerViewController {
+    func createModule(with pages: [WalletSinglePageModel]) -> WalletPickerViewController {
         let viewController = WalletPickerViewController()
-        configure(viewController)
+        configure(viewController: viewController, with: pages)
         return viewController
     }
 }
 
 private extension WalletPickerAssembly {
-    func configure(_ viewController: WalletPickerViewController) {
+    func configure(
+        viewController: WalletPickerViewController,
+        with pages: [WalletSinglePageModel]
+    ) {
         let router = WalletPickerRouter()
        // router.viewController = viewController
        // router.transition = transition
         
         let interactor = WalletPickerInteractor()
         let dataStore = WalletPickerDataStore()
+        
+        //данные приходят сразу - загрузка не требуется
+        dataStore.pagesLoadingState = .loaded(pages: pages)
         
         let presenter = WalletPickerPresenter(
             interactor: interactor,
@@ -43,6 +53,7 @@ private extension WalletPickerAssembly {
         
         presenter.view = viewController
         presenter.output = output
+        presenter.moduleInput = input
         interactor.output = presenter
         viewController.output = presenter
     }

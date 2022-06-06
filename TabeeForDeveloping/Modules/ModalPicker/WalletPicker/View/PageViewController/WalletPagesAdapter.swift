@@ -11,8 +11,8 @@ import UIKit
 final class WalletPagesAdapter: NSObject {
 
     weak var collectionView: UICollectionView!
-    
-    var walletCircles: [WalletSinglePageModel.ColorCircle] = []
+
+    var model: WalletSinglePageModel!
     
     init(collectionView: UICollectionView) {
         super.init()
@@ -41,9 +41,9 @@ final class WalletPagesAdapter: NSObject {
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.clipsToBounds = true
     }
-    
-    func updateCollection(with walletCircles: [WalletSinglePageModel.ColorCircle]) {
-        self.walletCircles = walletCircles
+
+    func updateCollection(with model: WalletSinglePageModel) {
+        self.model = model
         
         collectionView.reloadData()
     }
@@ -64,7 +64,7 @@ extension WalletPagesAdapter: UICollectionViewDelegate {
 extension WalletPagesAdapter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        walletCircles.count
+        model.colorCircles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,9 +73,9 @@ extension WalletPagesAdapter: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        
-        let model = walletCircles[indexPath.row]
-        cell.configure(colorsData: model.dataForView, action: model.action)
+
+        let circle = model.colorCircles[indexPath.row]
+        cell.configure(with: circle)
 
        return cell
 

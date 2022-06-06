@@ -13,9 +13,9 @@ class WalletCircleCell: UICollectionViewCell {
     
     var tapRecognizer: UITapGestureRecognizer?
     
-    var action: ((_ walletCircle: WalletCircleCell) -> Void)?
-
-    var colorsData: WalletSinglePageModel.ColorCircle.ColorsData!
+    //var action: ((_ walletCircle: WalletCircleCell) -> Void)?
+    
+    var model: WalletSinglePageModel.ColorCircle!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,33 +33,32 @@ class WalletCircleCell: UICollectionViewCell {
         let halfSize = size / 2
         
         let bgLayer = CAShapeLayer()
-        bgLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: colorsData.cornerRadius).cgPath
-        bgLayer.fillColor = colorsData.backgroundColoe.cgColor
+        bgLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: model.dataForView.cornerRadius).cgPath
+        bgLayer.fillColor = model.dataForView.backgroundColoe.cgColor
 
+//        layer.borderWidth = model.dataForView.borderWidth
+//        layer.borderColor = model.dataForView.borderColor.cgColor
+//        layer.cornerRadius = model.dataForView.cornerRadius
         
-        layer.borderWidth = colorsData.borderWidth
-        layer.borderColor = colorsData.borderColor.cgColor
-        layer.cornerRadius = colorsData.cornerRadius
-        
-        if colorsData.needBorder {
-            layer.borderWidth = colorsData.borderWidth
-            layer.borderColor = colorsData.borderColor.cgColor
-            layer.cornerRadius = colorsData.cornerRadius
+        if model.dataForView.needBorder {
+            layer.borderWidth = model.dataForView.borderWidth
+            layer.borderColor = model.dataForView.borderColor.cgColor
+            layer.cornerRadius = model.dataForView.cornerRadius
         }
 
         layer.addSublayer(bgLayer)
         
-        let pathLeft = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: colorsData.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: false)
-        let pathRight = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: colorsData.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: true)
+        let pathLeft = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: model.dataForView.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: false)
+        let pathRight = UIBezierPath(arcCenter: CGPoint(x: halfSize, y: halfSize), radius: model.dataForView.circleRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: true)
         
         
         let shapeLayerRight = CAShapeLayer()
         shapeLayerRight.path = pathRight.cgPath
-        shapeLayerRight.fillColor = colorsData.leftColor.cgColor
+        shapeLayerRight.fillColor = model.dataForView.leftColor.cgColor
         
         let shapeLayerLeft = CAShapeLayer()
         shapeLayerLeft.path = pathLeft.cgPath
-        shapeLayerLeft.fillColor = colorsData.rightColor.cgColor
+        shapeLayerLeft.fillColor = model.dataForView.rightColor.cgColor
 
         
         layer.addSublayer(shapeLayerLeft)
@@ -67,7 +66,7 @@ class WalletCircleCell: UICollectionViewCell {
         
         layer.masksToBounds = true
 
-        if colorsData.activityInProgress {
+        if model.dataForView.activityInProgress {
             addActivityIndicator()
         }
     }
@@ -89,7 +88,8 @@ extension WalletCircleCell {
     }
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
-        action?(self)
+        model.action(self)
+        //action?(self)
     }
 }
 
@@ -105,11 +105,9 @@ extension WalletCircleCell {
     func setupStyle() {
         backgroundColor = .clear
     }
-    
-    func configure(colorsData: WalletSinglePageModel.ColorCircle.ColorsData, action: @escaping (_ walletCircle: WalletCircleCell) -> Void) {
-        self.colorsData = colorsData
 
-        self.action = action
+    func configure(with model: WalletSinglePageModel.ColorCircle) {
+        self.model = model
     }
 }
 

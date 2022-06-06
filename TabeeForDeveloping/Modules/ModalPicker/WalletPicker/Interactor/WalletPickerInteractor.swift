@@ -8,14 +8,4 @@
 
 final class WalletPickerInteractor: WalletPickerInteractorInput {
     weak var output: WalletPickerInteractorOutput!
-    
-    //это тестовый метод - вообзе заполнение дагнными будет происходить ВНЕ модуля ! Удалить его после тестирования
-    func getPages() {
-        var pagesProvider = WalletPagesProvider()
-        
-        pagesProvider.makePages()
-        
-        output.getPagesDidFinish(with: .loaded(pages: pagesProvider.pages))
-    }
-
 }

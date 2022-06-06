@@ -14,6 +14,8 @@ final class WalletPickerPresenter {
     weak var floatingPanelController: FloatingPanelController?
     weak var view: WalletPickerViewInput!
     weak var output: WalletPickerModuleOutput?
+    weak var moduleInput: WalletPickerModuleInput?
+    
     private let interactor: WalletPickerInteractorInput
     private let router: WalletPickerRouter
     private let dataStore: WalletPickerDataStore
@@ -71,35 +73,15 @@ extension WalletPickerPresenter: WalletPickerViewOutput {
     }
     
     func viewWillAppear() {
-        getPages()
+        //все данные подгружены в Assembly - поэтому здесь просто обновить view с тем что есть
+        view.updateView(dataStore.viewState)
     }
 }
 
 // MARK: - WalletPickerModuleInput
 
-extension WalletPickerPresenter: WalletPickerModuleInput {
-    
-}
+extension WalletPickerPresenter: WalletPickerModuleInput { }
 
 // MARK: - WalletPickerInteractorOutput
 
-extension WalletPickerPresenter: WalletPickerInteractorOutput {
-    
-    //это тестовый метод. данные страничек будут приходить снаружи модуля
-    func getPagesDidFinish(with state: WalletPickerDataFlow.Presenter.PagesState) {
-        dataStore.pagesLoadingState = state
-        
-        view.updateView(dataStore.viewState)
-    }
-}
-
-// MARK: - Private
-
-private extension WalletPickerPresenter {
-    func getPages() {
-        dataStore.pagesLoadingState = .loading
-        view.updateView(dataStore.viewState)
-        
-        interactor.getPages()
-    }
-}
+extension WalletPickerPresenter: WalletPickerInteractorOutput { }

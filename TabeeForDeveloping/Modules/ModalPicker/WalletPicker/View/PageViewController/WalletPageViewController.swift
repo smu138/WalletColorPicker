@@ -164,7 +164,7 @@ extension WalletPageViewController {
     
     func setupCollectionCircles(with page: WalletSinglePageModel) {
         collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
-        collectionAdapter?.updateCollection(with: page.colorCircles)
+        collectionAdapter?.updateCollection(with: page)
     }
 }
 

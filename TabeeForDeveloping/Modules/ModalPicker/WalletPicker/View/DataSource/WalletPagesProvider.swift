@@ -8,30 +8,22 @@
 import UIKit
 
 struct WalletPagesProvider {
-    
-    var pages: [WalletSinglePageModel] = []
-    
+
     func makeActive(walletCircleView: WalletCircleCell) {
-        let colorsData = WalletSinglePageModel.ColorCircle.ColorsData(
-            leftColor: walletCircleView.colorsData.leftColor,
-            rightColor: walletCircleView.colorsData.rightColor,
-            backgroundColoe: walletCircleView.colorsData.backgroundColoe,
-            circleRadius: walletCircleView.colorsData.circleRadius,
-            activityInProgress: walletCircleView.colorsData.activityInProgress == true ? false : true,
-            needBorder: walletCircleView.colorsData.needBorder == true ? false : true,
-            borderColor: walletCircleView.colorsData.borderColor,
-            borderWidth: walletCircleView.colorsData.borderWidth,
-            cornerRadius: walletCircleView.colorsData.cornerRadius)
-        
-        walletCircleView.colorsData = colorsData
+
+        let originalModel = walletCircleView.model!
+
+        print("выбрана ячейка с \(originalModel.id)")
+
+        //нарисовать border, что она выбрана (и возможно надо обновить другие ячейки - если надо чтобы они соотв обновили border-ы)
         walletCircleView.draw(walletCircleView.frame)
     }
     
     //это будет заполняться снаружи - поэтому эти данные будут уходить на сервер - к примеру id этой ячейки
-    mutating func makePages() {
+    mutating func makePages() -> [WalletSinglePageModel] {
         let walletUrl = URL(string: "https://dev1.tabee.mobi/pb/a64c1219-e4d3-11ec-8057-6a13bef2453b")!
         
-        pages = [
+        return [
             .init(
                 pageIndex: 0,
                 walletData: .init(walletUrl: walletUrl, closeModuleAfterOpenWallet: false),

@@ -21,7 +21,12 @@ class ViewController: UIViewController {
 
 extension ViewController {
     @IBAction func openModal(_ sender: Any) {
-        let walletViewController = WalletPickerAssembly(output: self).createModule()
+        
+        var pagesTestProvider = WalletPagesProvider()
+        let pages = pagesTestProvider.makePages()
+        
+        
+        let walletViewController = WalletPickerAssembly(output: self).createModule(with: pages)
         walletViewController.output.openFPCModal()
     }
 }
