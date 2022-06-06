@@ -16,14 +16,14 @@ final class WalletPickerViewController: UIViewController {
     private var pages: [WalletSinglePageModel] = []
     private var currentIndex: Int = 0
     
-    private let pageControl: UIPageControl = {
-        $0.tintColor = UIColor.lightGray
-        $0.pageIndicatorTintColor = UIColor.lightGray
-        $0.currentPageIndicatorTintColor = UIColor.darkGray
-        $0.backgroundColor = UIColor.clear
-        
-        return $0
-    }(UIPageControl())
+//    private let pageControl: UIPageControl = {
+//        $0.tintColor = UIColor.lightGray
+//        $0.pageIndicatorTintColor = UIColor.lightGray
+//        $0.currentPageIndicatorTintColor = UIColor.darkGray
+//        $0.backgroundColor = UIColor.clear
+//
+//        return $0
+//    }(UIPageControl())
     
     // MARK: - Properties
     
@@ -105,18 +105,12 @@ extension WalletPickerViewController: WalletPickerViewInput {
             ()
         case .loaded(pages: let pages):
             self.pages = pages
-            
-            //pageController.dataSource = nil;
-            //pageController.dataSource = self;
-            
-            //pageController.delegate = nil;
-            //pageController.delegate = self;
 
             let controllers = createWalletPageController()
             
             pageController.setViewControllers([controllers.first!], direction: .forward, animated: true, completion: nil)
             
-            pageControl.numberOfPages = pages.count
+            //pageControl.numberOfPages = pages.count
             
         case .error:
             //TODO: отобразить ошибку
@@ -211,7 +205,7 @@ extension WalletPickerViewController {
         
         pageController.didMove(toParent: self)
         
-        pageControl.numberOfPages = pages.count
+        //pageControl.numberOfPages = pages.count
         
         pageController.view.snp.makeConstraints { make in
             make.height.equalTo(80)
@@ -295,13 +289,13 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
         return vc
     }
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pages.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return self.currentIndex
-    }
+//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return self.pages.count
+//    }
+//    
+//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//        return self.currentIndex
+//    }
     
 //    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 //

@@ -11,7 +11,8 @@ import FloatingPanel
 final class WalletPickerRouter /*: Router<WalletPickerViewController>, WalletPickerRouter.ConnectedRoutes */ {
    // typealias ConnectedRoutes = NavigatorRoute
 
-    func openModal(baseViewController: UIViewController, walletPickerViewController: WalletPickerViewController) {
+    func openModal(baseViewController: UIViewController, walletPickerViewController: WalletPickerViewController) -> FloatingPanelController
+    {
         let fpc = FloatingPanelController()
         
         fpc.set(contentViewController: walletPickerViewController)
@@ -29,6 +30,7 @@ final class WalletPickerRouter /*: Router<WalletPickerViewController>, WalletPic
         //fpc.behavior = CustomPanelBehavior()
         
         baseViewController.present(fpc, animated: true, completion: nil)
+        return fpc
     }
  
 }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FloatingPanel
 
 final class WalletPickerPresenter {
     
+    weak var floatingPanelController: FloatingPanelController?
     weak var view: WalletPickerViewInput!
     weak var output: WalletPickerModuleOutput?
     private let interactor: WalletPickerInteractorInput
@@ -46,13 +48,12 @@ extension WalletPickerPresenter: WalletPickerViewOutput {
             return
         }
         
-        router.openModal(baseViewController: baseViewController, walletPickerViewController: view)
+        floatingPanelController = router.openModal(baseViewController: baseViewController, walletPickerViewController: view)
     }
     
     func closeTapped() {
-        output?.closeModule()
+        floatingPanelController?.dismiss(animated: true, completion: nil)
     }
-    
     
     func viewIsReady() {
         view.setupInitialState(dataStore.viewState)
