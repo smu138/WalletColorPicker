@@ -127,12 +127,7 @@ private extension WalletPickerViewController {
 }
 
 // MARK: - Actions
-extension WalletPickerViewController {
-    @objc func buttonActionHandler(_ button: UIButton) {
-        print("tapped - closing modal")
-        output.closeTapped()
-    }
-}
+extension WalletPickerViewController { }
 
 // MARK: - PageViewController Setup
 
@@ -169,7 +164,8 @@ extension WalletPickerViewController {
         containerView.addSubview(pageController.view)
         //containerView.addSubview(pageControl)
         
-        let initialVC = WalletPageViewController(with: .init(pageIndex: 0, colorCircles: [
+        let initialVC = WalletPageViewController(with: .init(pageIndex: 0,
+                                                             walletData: .init(walletUrl: URL(string: "")!, closeModuleAfterOpenWallet: false), colorCircles: [
             .init(id: "-", dataForView: .init(
                 leftColor: .green,
                 rightColor: .green,
@@ -295,7 +291,13 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
 // MARK: - Single Page Controllers output
 
 extension WalletPickerViewController: WalletPageViewControllerOutput {
+    func closePageTapped(with page: WalletSinglePageModel) {
+        output.closePageTapped(with: page)
+    }
     
+    func openUrlTapped(with page: WalletSinglePageModel) {
+        output.openUrlTapped(with: page)
+    }
 }
 
 // MARK: - FloatingPanelController Delegate

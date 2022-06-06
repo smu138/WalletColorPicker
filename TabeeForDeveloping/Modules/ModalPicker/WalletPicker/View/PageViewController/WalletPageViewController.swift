@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 import SnapKit
+import PassKit
 
 // используется для вывода данных с Page Controller-а
 protocol WalletPageViewControllerOutput: AnyObject {
     //пока не требуется
+    func closePageTapped(with page: WalletSinglePageModel)
+    func openUrlTapped(with page: WalletSinglePageModel)
 }
 
 class WalletPageViewController: UIViewController {
@@ -76,14 +79,8 @@ class WalletPageViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let walletButton: UIButton = {
-        $0.setTitle("Add to Apple Wallet", for: .normal)
-        //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
-        $0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
-        //$0.tintColor = Palette.Text.contrast.color
-        return $0
-    }(UIButton(type: .system))
-    
+    let walletButton = PKAddPassButton(addPassButtonStyle: PKAddPassButtonStyle.black)
+
     private let closeButton: UIButton = {
         $0.setTitle("I'll do it later", for: .normal)
         //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
@@ -159,7 +156,8 @@ extension WalletPageViewController {
     }
     
     func setupActions() {
-        //button.addTarget(self, action: #selector(buttonActionHandler(_:)), for: .touchUpInside)
+        walletButton.addTarget(self, action: #selector(walletButtonAction), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
     }
     
     func applyStyles() { }
@@ -167,5 +165,15 @@ extension WalletPageViewController {
     func setupCollectionCircles(with page: WalletSinglePageModel) {
         collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
         collectionAdapter?.updateCollection(with: page.colorCircles)
+    }
+}
+
+extension WalletPageViewController {
+    @objc func walletButtonAction() {
+        output?.openUrlTapped(with: page)
+    }
+    
+    @objc func closeButtonAction() {
+        output?.closePageTapped(with: page)
     }
 }

@@ -32,5 +32,22 @@ final class WalletPickerRouter /*: Router<WalletPickerViewController>, WalletPic
         baseViewController.present(fpc, animated: true, completion: nil)
         return fpc
     }
+    
+    func openUrlTapped(
+        fpc: FloatingPanelController,
+        with page: WalletSinglePageModel
+    ) {
+        if UIApplication.shared.canOpenURL(page.walletData.walletUrl) {
+            UIApplication.shared.open(page.walletData.walletUrl) { result in
+                if result, page.walletData.closeModuleAfterOpenWallet {
+                    fpc.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func closePageTapped(with fpc: FloatingPanelController) {
+        fpc.dismiss(animated: true, completion: nil)
+    }
  
 }

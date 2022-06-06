@@ -31,6 +31,7 @@ struct WalletPickerDataFlow {
         enum Events {
             case moduleStart
             case moduleDismiss
+            case closeButtonTapped
             case colorCellTap(_ cellId: String?)
             case openWalletUrl(_ url: URL?)
         }

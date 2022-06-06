@@ -39,6 +39,8 @@ extension ViewController: WalletPickerModuleOutput {
             print("analitic event colorCellTap with cellId: \(String(describing: cellId))")
         case .openWalletUrl(let url):
             print("analitic event openWalletUrl: \(String(describing: url))")
+        case .closeButtonTapped:
+            print("analitic event: closeButtonTapped")
         }
     }
 }

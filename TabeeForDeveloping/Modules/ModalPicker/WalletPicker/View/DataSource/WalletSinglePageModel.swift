@@ -17,5 +17,13 @@ struct WalletSinglePageModel {
         let action: (_ walletView: WalletCircleCell) -> Void
     }
     
+    struct Wallet {
+        let walletUrl: URL
+        /// Dismiss module after success opened wallet url
+        let closeModuleAfterOpenWallet: Bool
+    }
+
+    let walletData: Wallet
+    
     let colorCircles: [ColorCircle]
 }

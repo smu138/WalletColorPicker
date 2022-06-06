@@ -29,8 +29,13 @@ struct WalletPagesProvider {
     
     //это будет заполняться снаружи - поэтому эти данные будут уходить на сервер - к примеру id этой ячейки
     mutating func makePages() {
+        let walletUrl = URL(string: "https://dev1.tabee.mobi/pb/a64c1219-e4d3-11ec-8057-6a13bef2453b")!
+        
         pages = [
-            .init(pageIndex: 0, colorCircles: [
+            .init(
+                pageIndex: 0,
+                walletData: .init(walletUrl: walletUrl, closeModuleAfterOpenWallet: false),
+                colorCircles: [
                 .init(id: "id1",
                       dataForView: .init(
                         leftColor: .orange,

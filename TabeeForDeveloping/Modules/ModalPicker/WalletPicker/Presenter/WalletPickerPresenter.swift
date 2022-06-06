@@ -33,6 +33,16 @@ final class WalletPickerPresenter {
 
 extension WalletPickerPresenter: WalletPickerViewOutput {
     
+    func closePageTapped(with page: WalletSinglePageModel) {
+        output?.sendAnalytic(event: .closeButtonTapped)
+        router.closePageTapped(with: floatingPanelController!)
+    }
+    
+    func openUrlTapped(with page: WalletSinglePageModel) {
+        output?.sendAnalytic(event: .openWalletUrl(page.walletData.walletUrl))
+        router.openUrlTapped(fpc: floatingPanelController!, with: page)
+    }
+    
     // отправка в output приходящей из view аналитики
     func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events) {
         output?.sendAnalytic(event: event)
