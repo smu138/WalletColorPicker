@@ -36,7 +36,7 @@ class WalletPageViewController: UIViewController {
         $0.numberOfLines = 1
         $0.textAlignment = .left
         $0.lineBreakMode = .byTruncatingMiddle
-        $0.font = .boldSystemFont(ofSize: 16)
+        $0.font = .boldSystemFont(ofSize: 18)
         $0.textColor     = .black
         $0.setContentCompressionResistancePriority(.required, for: .horizontal)
         return $0
@@ -56,9 +56,8 @@ class WalletPageViewController: UIViewController {
     }()
     
     private let vStackView: UIStackView = {
-        //$0.isUserInteractionEnabled = false
         $0.axis = .vertical
-        $0.alignment = .center
+        $0.alignment = .fill
         $0.distribution = .fill
         $0.spacing = 8
         return $0
@@ -69,7 +68,7 @@ class WalletPageViewController: UIViewController {
         $0.numberOfLines = 0
         $0.textAlignment = .left
         $0.lineBreakMode = .byWordWrapping
-        $0.font = .boldSystemFont(ofSize: 14)
+        $0.font = .systemFont(ofSize: 14)
         $0.textColor     = .black
         
         $0.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -78,7 +77,7 @@ class WalletPageViewController: UIViewController {
     }(UILabel())
     
     private let walletButton: UIButton = {
-        $0.setTitle("Закрыть модалку", for: .normal)
+        $0.setTitle("Add to Apple Wallet", for: .normal)
         //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
         $0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
         //$0.tintColor = Palette.Text.contrast.color
@@ -86,7 +85,7 @@ class WalletPageViewController: UIViewController {
     }(UIButton(type: .system))
     
     private let closeButton: UIButton = {
-        $0.setTitle("Закрыть модалку", for: .normal)
+        $0.setTitle("I'll do it later", for: .normal)
         //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
         $0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
         //$0.tintColor = Palette.Text.contrast.color
@@ -125,60 +124,38 @@ extension WalletPageViewController {
         containerView.addSubview(topLabel)
         containerView.addSubview(collectionView)
         
-        containerView.addSubview(descriptionLabel)
-        containerView.addSubview(walletButton)
-        containerView.addSubview(closeButton)
+        vStackView.addArrangedSubview(descriptionLabel)
+        vStackView.addArrangedSubview(walletButton)
+        vStackView.setCustomSpacing(16, after: walletButton)
+        vStackView.addArrangedSubview(closeButton)
         
-        //containerView.addSubview(vStackView)
+        containerView.addSubview(vStackView)
         view.addSubview(containerView)
     }
 
     func setupConstraints() {
         containerView.snp.makeConstraints { make in
-            //make.height.equalTo(50)
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(8)
-            //make.centerY.equalToSuperview()
         }
 
         topLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(24)
             make.leading.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(topLabel.snp.bottom).offset(16)
+            make.top.equalTo(topLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)//.priority(999)
-            //make.bottom.equalTo(vStackView.snp.top)
+            make.height.equalTo(50)
         }
         
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom)
+        vStackView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
-            //make.height.equalTo(56).priority(999)
+            make.bottom.equalToSuperview().inset(16)
         }
-        
-        walletButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            //make.height.equalTo(56).priority(999)
-        }
-        
-        closeButton.snp.makeConstraints { make in
-            make.top.equalTo(walletButton.snp.bottom)
-            //make.height.equalTo(56).priority(999)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-//        vStackView.snp.makeConstraints { make in
-//            make.top.equalTo(collectionView.snp.bottom)//.offset(16)
-//            make.leading.trailing.equalToSuperview()
-//            //make.height.equalTo(150).priority(999)
-//            make.bottom.equalToSuperview()//.inset(8)
-//        }
     }
     
     func setupActions() {

@@ -76,8 +76,11 @@ extension WalletPickerViewController: WalletPickerViewInput {
             self.pages = pages
 
             let controllers = createWalletPageController()
-            
-            pageController.setViewControllers([controllers.first!], direction: .forward, animated: true, completion: nil)
+
+            // на данный момент глючит с расчетом высоты - надо подсчитывать ее вручную - поэтому пока не используется
+            //pageController.setViewControllers([controllers.first!], direction: .forward, animated: true, completion: nil)
+
+            openSinglePage(walletPageViewController: controllers.first!)
             
             //bugged pageControl hide
             //pageController.view.togglePageControl(pageCount: pages.count, threshold: 1)
@@ -103,21 +106,13 @@ private extension WalletPickerViewController {
     func setupViews() {
         view.addSubview(containerView)
         
-        setupPageController()
-
-        //containerView.addSubview(vStackView)
-        //vStackView.addArrangedSubview(descriptionLabel)
-        //vStackView.addArrangedSubview(button)
+        //setupPageController()
     }
     
     func setupLayout() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()//.inset(16)
         }
-
-//        vStackView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
     }
     
     func applyStyles() {
@@ -142,6 +137,27 @@ extension WalletPickerViewController {
 // MARK: - PageViewController Setup
 
 extension WalletPickerViewController {
+    
+    //открывает единичную страницу
+    func openSinglePage(walletPageViewController: WalletPageViewController) {
+        
+        walletPageViewController.view.removeFromSuperview()
+        walletPageViewController.removeFromParent()
+        
+        addChild(walletPageViewController)
+        view.addSubview(walletPageViewController.view)
+        
+        walletPageViewController.didMove(toParent: self)
+        
+        walletPageViewController.view.snp.remakeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    // открывает page controller -
+    // на данный момент глючит с расчетом высоты - надо подсчитывать ее вручную - поэтому пока не используется
     private func setupPageController() {
 
         pageController.dataSource = self
@@ -174,7 +190,7 @@ extension WalletPickerViewController {
         //pageControl.numberOfPages = pages.count
         
         pageController.view.snp.makeConstraints { make in
-            make.height.greaterThanOrEqualTo(200)
+            make.height.greaterThanOrEqualTo(200) //pageController height bugged with floating panel
             make.leading.trailing.equalToSuperview()//.inset(8)
             make.top.equalToSuperview()//.offset(16)
             
