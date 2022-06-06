@@ -9,11 +9,21 @@ import Foundation
 import UIKit
 import SnapKit
 
+// используется для вывода данных с Page Controller-а
+protocol WalletPageViewControllerOutput: AnyObject {
+    //пока не требуется
+}
 
 class WalletPageViewController: UIViewController {
     
+    // MARK: - Class Variables
+    
+    weak var output: WalletPageViewControllerOutput?
+    
     let page: WalletSinglePageModel //поддержка pageViewController
     private var collectionAdapter: WalletPagesAdapter?
+    
+    // MARK: - UI Components
     
     private let containerView: UIView = {
         $0.backgroundColor = .white
@@ -29,9 +39,12 @@ class WalletPageViewController: UIViewController {
         return collectionView
     }()
 
-    init(with page: WalletSinglePageModel) {
+    // MARK: - Class Initializers
+    
+    init(with page: WalletSinglePageModel, output: WalletPageViewControllerOutput?) {
         self.page = page
-
+        self.output = output
+        
         super.init(nibName: nil, bundle: nil)
         
         setupView()
@@ -49,7 +62,11 @@ class WalletPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+}
+
+// MARK: - UI Setup
+
+extension WalletPageViewController {
     func setupView() {
         view.addSubview(containerView)
         containerView.addSubview(collectionView)
@@ -75,5 +92,4 @@ class WalletPageViewController: UIViewController {
         collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
         collectionAdapter?.updateCollection(with: page.colorCircles)
     }
-    
 }

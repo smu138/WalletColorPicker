@@ -22,6 +22,7 @@ final class WalletPagesAdapter: NSObject {
         configureCollectionView()
     }
  
+    // MARK: - Configure collection
     func configureCollectionView() {
         
         collectionView.delegate = self
@@ -31,18 +32,11 @@ final class WalletPagesAdapter: NSObject {
 
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        //collectionView.alwaysBounceVertical = false
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
         
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.clipsToBounds = true
-
-        //collectionView.directionalLayoutMargins = .zero
-
-        //collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        //collectionView.collectionViewLayout.invalidateLayout()
-        //collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func updateCollection(with walletCircles: [WalletSinglePageModel.ColorCircle]) {
@@ -53,11 +47,11 @@ final class WalletPagesAdapter: NSObject {
     
 }
 
-extension WalletPagesAdapter: UICollectionViewDelegate {
+// MARK: - Collection Delegate
+extension WalletPagesAdapter: UICollectionViewDelegate { }
 
-    
-}
 
+// MARK: - Collection DataSource
 
 extension WalletPagesAdapter: UICollectionViewDataSource {
     

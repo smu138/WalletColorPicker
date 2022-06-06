@@ -12,5 +12,8 @@ protocol WalletPickerViewOutput {
     
     func closeTapped()
     
+    //открывает из внешнего контроллера - этот
     func openFPCModal()
+    
+    func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events)
 }

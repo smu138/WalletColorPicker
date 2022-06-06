@@ -26,4 +26,13 @@ struct WalletPickerDataFlow {
     }
 
     struct Interactor { }
+    
+    struct Analytic {
+        enum Events {
+            case moduleStart
+            case moduleDismiss
+            case colorCellTap(_ cellId: String?)
+            case openWalletUrl(_ url: URL?)
+        }
+    }
 }

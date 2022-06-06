@@ -30,6 +30,12 @@ final class WalletPickerPresenter {
 // MARK: - WalletPickerViewOutput
 
 extension WalletPickerPresenter: WalletPickerViewOutput {
+    
+    // отправка в output приходящей из view аналитики
+    func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events) {
+        output?.sendAnalytic(event: event)
+    }
+    
     //открывает панельку из внешнего контроллера и показывает в ней себя
     func openFPCModal() {
         guard
@@ -50,6 +56,7 @@ extension WalletPickerPresenter: WalletPickerViewOutput {
     
     func viewIsReady() {
         view.setupInitialState(dataStore.viewState)
+        output?.sendAnalytic(event: .moduleStart)
     }
     
     func viewWillAppear() {
@@ -73,8 +80,6 @@ extension WalletPickerPresenter: WalletPickerInteractorOutput {
         
         view.updateView(dataStore.viewState)
     }
-    
-    
 }
 
 // MARK: - Private

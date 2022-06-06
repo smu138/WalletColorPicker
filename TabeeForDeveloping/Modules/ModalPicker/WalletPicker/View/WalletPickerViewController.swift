@@ -171,6 +171,7 @@ private extension WalletPickerViewController {
     struct Constraints { }
 }
 
+// MARK: - Actions
 extension WalletPickerViewController {
     @objc func buttonActionHandler(_ button: UIButton) {
         print("tapped - closing modal")
@@ -178,66 +179,8 @@ extension WalletPickerViewController {
     }
 }
 
-class IntrinsicPanelLayout: FloatingPanelLayout {
-    let position: FloatingPanelPosition = .bottom
-    let initialState: FloatingPanelState = .full
-    var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
-        return [
-            .full: FloatingPanelIntrinsicLayoutAnchor(absoluteOffset: 0, referenceGuide: .safeArea)
-            //.half: FloatingPanelIntrinsicLayoutAnchor(fractionalOffset: 0.5, referenceGuide: .safeArea)
-        ]
-    }
-    
-    func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
-            switch state {
-            case .full: return 0.05
-            default: return 0.0
-            }
-    }
-}
+// MARK: - PageViewController Setup
 
-
-class CustomPanelBehavior: FloatingPanelBehavior {
-    let springDecelerationRate = UIScrollView.DecelerationRate.fast.rawValue + 0.02
-    let springResponseTime = 0.4
-    func shouldProjectMomentum(_ fpc: FloatingPanelController, to proposedTargetPosition: FloatingPanelState) -> Bool {
-        return true
-    }
-}
-
-
-//не используется- но если надо кастомизовать граббер- это можно сделать тут (анимировать или что угодно)
-public class GrabberViewCustom: UIView {
-
-    public var barColor = UIColor(displayP3Red: 0.76, green: 0.77, blue: 0.76, alpha: 1.0) { didSet { backgroundColor = barColor } }
-
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = barColor
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        render()
-    }
-
-    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        return view == self ? nil : view
-    }
-
-    private func render() {
-        self.layer.masksToBounds = true
-    }
-}
-
-
-
-// MARK: - PageViewController
 extension WalletPickerViewController {
     private func setupPageController() {
 
@@ -262,7 +205,7 @@ extension WalletPickerViewController {
                 borderWidth: 2,
                 cornerRadius: 3),
                   action: { _ in })
-        ]))
+        ]), output: self)
         
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
@@ -301,7 +244,7 @@ extension WalletPickerViewController {
     
     func createWalletPageController() -> [WalletPageViewController] {
         let pages: [WalletPageViewController] = pages.map { singlePageModel in
-            let controller = WalletPageViewController(with: singlePageModel)
+            let controller = WalletPageViewController(with: singlePageModel, output: self)
             
             return controller
         }
@@ -309,6 +252,8 @@ extension WalletPickerViewController {
         return pages
     }
 }
+
+// MARK: - PageViewController DataSource & Delegate
 
 extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
@@ -326,7 +271,7 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
         
         index -= 1
         
-        let vc = WalletPageViewController(with: pages[index])
+        let vc = WalletPageViewController(with: pages[index], output: self)
         
         return vc
     }
@@ -345,7 +290,7 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
         
         index += 1
         
-        let vc = WalletPageViewController(with: pages[index])
+        let vc = WalletPageViewController(with: pages[index], output: self)
         
         return vc
     }
@@ -369,7 +314,16 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
 //    }
 }
 
+// MARK: - Single Page Controllers output
+
+extension WalletPickerViewController: WalletPageViewControllerOutput {
+    
+}
+
+// MARK: - FloatingPanelController Delegate
 
 extension WalletPickerViewController: FloatingPanelControllerDelegate {
-    
+    func floatingPanelDidRemove(_ fpc: FloatingPanelController) {
+        output.sendAnalytic(event: .moduleDismiss)
+    }
 }
