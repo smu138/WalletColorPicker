@@ -7,7 +7,5 @@
 //
 
 protocol WalletPickerModuleOutput: AnyObject {
-    func closeModule()
-    
     func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events)
 }

@@ -6,10 +6,8 @@
 //
 
 import UIKit
-import FloatingPanel
 
 class ViewController: UIViewController {
-    //let fpc = FloatingPanelController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +40,5 @@ extension ViewController: WalletPickerModuleOutput {
         case .openWalletUrl(let url):
             print("analitic event openWalletUrl: \(String(describing: url))")
         }
-        
     }
-    
-    
-    
-    func closeModule() {
-        
-//        fpc.dismiss(animated: true) {
-//            print("dismissed")
-//        }
-
-    }
-}
-
-
-extension ViewController: FloatingPanelControllerDelegate {
-    
 }
