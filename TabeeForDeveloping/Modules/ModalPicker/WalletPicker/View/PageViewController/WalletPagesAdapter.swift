@@ -35,6 +35,9 @@ final class WalletPagesAdapter: NSObject {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
         
+        collectionView.alwaysBounceHorizontal = false
+        collectionView.alwaysBounceVertical = false
+        
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.clipsToBounds = true
     }
