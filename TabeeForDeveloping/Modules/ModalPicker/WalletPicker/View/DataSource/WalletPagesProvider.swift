@@ -152,203 +152,203 @@ struct WalletPagesProvider {
                 
             ]),
             
-                .init(pageIndex: 1, colorCircles: [
-                    .init(id: "id1",
-                          dataForView: .init(
-                            leftColor: .orange,
-                            rightColor: .green,
-                            backgroundColoe: .cyan,
-                            circleRadius: 15,
-                            activityInProgress: false,
-                            needBorder: true,
-                            borderColor: .blue,
-                            borderWidth: 2,
-                            cornerRadius: 5),
-                          action: { [self] walletCircleView in
-                              self.makeActive(walletCircleView: walletCircleView)
-                          }),
-                    
-                        .init(id: "id15555",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .cyan,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: false,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id13312",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .cyan,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: false,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id55",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .cyan,
-                                circleRadius: 15,
-                                activityInProgress: true,
-                                needBorder: true,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id1112",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .cyan,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: true,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    .init(id: "id13312",
-                          dataForView: .init(
-                            leftColor: .orange,
-                            rightColor: .green,
-                            backgroundColoe: .cyan,
-                            circleRadius: 15,
-                            activityInProgress: false,
-                            needBorder: false,
-                            borderColor: .blue,
-                            borderWidth: 2,
-                            cornerRadius: 5),
-                          action: { [self] walletCircleView in
-                              self.makeActive(walletCircleView: walletCircleView)
-                          }),
-                
-                    .init(id: "id55",
-                          dataForView: .init(
-                            leftColor: .orange,
-                            rightColor: .green,
-                            backgroundColoe: .cyan,
-                            circleRadius: 15,
-                            activityInProgress: true,
-                            needBorder: true,
-                            borderColor: .blue,
-                            borderWidth: 2,
-                            cornerRadius: 5),
-                          action: { [self] walletCircleView in
-                              self.makeActive(walletCircleView: walletCircleView)
-                          }),
-                
-                    .init(id: "id1112",
-                          dataForView: .init(
-                            leftColor: .orange,
-                            rightColor: .green,
-                            backgroundColoe: .cyan,
-                            circleRadius: 15,
-                            activityInProgress: false,
-                            needBorder: true,
-                            borderColor: .blue,
-                            borderWidth: 2,
-                            cornerRadius: 5),
-                          action: { [self] walletCircleView in
-                              self.makeActive(walletCircleView: walletCircleView)
-                          })
-                ]),
+//                .init(pageIndex: 1, colorCircles: [
+//                    .init(id: "id1",
+//                          dataForView: .init(
+//                            leftColor: .orange,
+//                            rightColor: .green,
+//                            backgroundColoe: .cyan,
+//                            circleRadius: 15,
+//                            activityInProgress: false,
+//                            needBorder: true,
+//                            borderColor: .blue,
+//                            borderWidth: 2,
+//                            cornerRadius: 5),
+//                          action: { [self] walletCircleView in
+//                              self.makeActive(walletCircleView: walletCircleView)
+//                          }),
+//                    
+//                        .init(id: "id15555",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .cyan,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: false,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//                    
+//                        .init(id: "id13312",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .cyan,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: false,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//                    
+//                        .init(id: "id55",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .cyan,
+//                                circleRadius: 15,
+//                                activityInProgress: true,
+//                                needBorder: true,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//                    
+//                        .init(id: "id1112",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .cyan,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: true,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//                    .init(id: "id13312",
+//                          dataForView: .init(
+//                            leftColor: .orange,
+//                            rightColor: .green,
+//                            backgroundColoe: .cyan,
+//                            circleRadius: 15,
+//                            activityInProgress: false,
+//                            needBorder: false,
+//                            borderColor: .blue,
+//                            borderWidth: 2,
+//                            cornerRadius: 5),
+//                          action: { [self] walletCircleView in
+//                              self.makeActive(walletCircleView: walletCircleView)
+//                          }),
+//                
+//                    .init(id: "id55",
+//                          dataForView: .init(
+//                            leftColor: .orange,
+//                            rightColor: .green,
+//                            backgroundColoe: .cyan,
+//                            circleRadius: 15,
+//                            activityInProgress: true,
+//                            needBorder: true,
+//                            borderColor: .blue,
+//                            borderWidth: 2,
+//                            cornerRadius: 5),
+//                          action: { [self] walletCircleView in
+//                              self.makeActive(walletCircleView: walletCircleView)
+//                          }),
+//                
+//                    .init(id: "id1112",
+//                          dataForView: .init(
+//                            leftColor: .orange,
+//                            rightColor: .green,
+//                            backgroundColoe: .cyan,
+//                            circleRadius: 15,
+//                            activityInProgress: false,
+//                            needBorder: true,
+//                            borderColor: .blue,
+//                            borderWidth: 2,
+//                            cornerRadius: 5),
+//                          action: { [self] walletCircleView in
+//                              self.makeActive(walletCircleView: walletCircleView)
+//                          })
+//                ]),
             
-                .init(pageIndex: 2, colorCircles: [
-                    .init(id: "id1",
-                          dataForView: .init(
-                            leftColor: .orange,
-                            rightColor: .green,
-                            backgroundColoe: .gray,
-                            circleRadius: 15,
-                            activityInProgress: false,
-                            needBorder: true,
-                            borderColor: .blue,
-                            borderWidth: 2,
-                            cornerRadius: 5),
-                          action: { [self] walletCircleView in
-                              self.makeActive(walletCircleView: walletCircleView)
-                          }),
-                    
-                        .init(id: "id15555",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .gray,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: false,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id13312",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .gray,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: false,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id55",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .gray,
-                                circleRadius: 15,
-                                activityInProgress: true,
-                                needBorder: true,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              }),
-                    
-                        .init(id: "id1112",
-                              dataForView: .init(
-                                leftColor: .orange,
-                                rightColor: .green,
-                                backgroundColoe: .gray,
-                                circleRadius: 15,
-                                activityInProgress: false,
-                                needBorder: true,
-                                borderColor: .blue,
-                                borderWidth: 2,
-                                cornerRadius: 5),
-                              action: { [self] walletCircleView in
-                                  self.makeActive(walletCircleView: walletCircleView)
-                              })
-                ])
+//                .init(pageIndex: 2, colorCircles: [
+//                    .init(id: "id1",
+//                          dataForView: .init(
+//                            leftColor: .orange,
+//                            rightColor: .green,
+//                            backgroundColoe: .gray,
+//                            circleRadius: 15,
+//                            activityInProgress: false,
+//                            needBorder: true,
+//                            borderColor: .blue,
+//                            borderWidth: 2,
+//                            cornerRadius: 5),
+//                          action: { [self] walletCircleView in
+//                              self.makeActive(walletCircleView: walletCircleView)
+//                          }),
+//
+//                        .init(id: "id15555",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .gray,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: false,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//
+//                        .init(id: "id13312",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .gray,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: false,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//
+//                        .init(id: "id55",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .gray,
+//                                circleRadius: 15,
+//                                activityInProgress: true,
+//                                needBorder: true,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              }),
+//
+//                        .init(id: "id1112",
+//                              dataForView: .init(
+//                                leftColor: .orange,
+//                                rightColor: .green,
+//                                backgroundColoe: .gray,
+//                                circleRadius: 15,
+//                                activityInProgress: false,
+//                                needBorder: true,
+//                                borderColor: .blue,
+//                                borderWidth: 2,
+//                                cornerRadius: 5),
+//                              action: { [self] walletCircleView in
+//                                  self.makeActive(walletCircleView: walletCircleView)
+//                              })
+//                ])
         ]
     }
 }

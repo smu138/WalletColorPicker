@@ -110,6 +110,10 @@ extension WalletPickerViewController: WalletPickerViewInput {
             
             pageController.setViewControllers([controllers.first!], direction: .forward, animated: true, completion: nil)
             
+            //bugged pageControl hide
+            //pageController.view.togglePageControl(pageCount: pages.count, threshold: 1)
+            
+            //custom pagecontrol
             //pageControl.numberOfPages = pages.count
             
         case .error:
@@ -289,14 +293,16 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
         return vc
     }
     
+    //пока скроем pageControl точки - когда будет много страниц- тогда подумать как их скрывать в togglePageControl()
 //    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-//        return self.pages.count
+//        return pages.count
 //    }
-//    
+//
 //    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-//        return self.currentIndex
+//        return currentIndex
 //    }
     
+    //кастомный pageControl
 //    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 //
 //        guard let currentVC = pageViewController.viewControllers?.first as? WalletPageViewController else {
