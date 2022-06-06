@@ -129,7 +129,7 @@ extension WalletPickerViewController: WalletPickerViewInput {
     }
 }
 
-// MARK: - Setup
+// MARK: - Setup UI
 
 private extension WalletPickerViewController {
     
@@ -152,6 +152,8 @@ private extension WalletPickerViewController {
 //            make.edges.equalToSuperview()
 //        }
     }
+    
+    // MARK: - Actions
     
     func setupActions() {
         button.addTarget(self, action: #selector(buttonActionHandler(_:)), for: .touchUpInside)
@@ -365,4 +367,9 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
 //
 //        pageControl.currentPage = currentVC.page.pageIndex
 //    }
+}
+
+
+extension WalletPickerViewController: FloatingPanelControllerDelegate {
+    
 }

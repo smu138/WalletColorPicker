@@ -6,6 +6,8 @@
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import UIKit
+
 final class WalletPickerPresenter {
     
     weak var view: WalletPickerViewInput!
@@ -28,6 +30,19 @@ final class WalletPickerPresenter {
 // MARK: - WalletPickerViewOutput
 
 extension WalletPickerPresenter: WalletPickerViewOutput {
+    //открывает панельку из внешнего контроллера и показывает в ней себя
+    func openFPCModal() {
+        guard
+            let baseViewController = output as? UIViewController,
+            let view = view as? WalletPickerViewController
+        else {
+            assertionFailure("For UIViewControllers ONLY !")
+            return
+        }
+        
+        router.openModal(baseViewController: baseViewController, walletPickerViewController: view)
+    }
+    
     func closeTapped() {
         output?.closeModule()
     }

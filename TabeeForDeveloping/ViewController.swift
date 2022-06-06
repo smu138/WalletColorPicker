@@ -9,7 +9,7 @@ import UIKit
 import FloatingPanel
 
 class ViewController: UIViewController {
-    let fpc = FloatingPanelController()
+    //let fpc = FloatingPanelController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,55 +24,56 @@ class ViewController: UIViewController {
 extension ViewController {
     @IBAction func openModal(_ sender: Any) {
         let walletViewController = WalletPickerAssembly(output: self).createModule()
+        walletViewController.output.openFPCModal()
         
-        setupFpcSurface()
-        customGrabberHandle()
-        customizeEdges()
+//        setupFpcSurface()
+//        customGrabberHandle()
+//        customizeEdges()
+//
+//        fpc.set(contentViewController: walletViewController)
+//
+//        fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
+//        fpc.backdropView.dismissalTapGestureRecognizer.isEnabled = true
+//
+//        fpc.layout = IntrinsicPanelLayout()
+//        fpc.delegate = self
+      //  //fpc.behavior = CustomPanelBehavior()
         
-        fpc.set(contentViewController: walletViewController)
-
-        fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
-        fpc.backdropView.dismissalTapGestureRecognizer.isEnabled = true
-        
-        fpc.layout = IntrinsicPanelLayout()
-        fpc.delegate = self
-        //fpc.behavior = CustomPanelBehavior()
-        
-        self.present(fpc, animated: true, completion: nil)
+       // self.present(fpc, animated: true, completion: nil)
 
     }
     
-    func setupFpcSurface() {
-        // Create a new appearance.
-        let appearance = SurfaceAppearance()
-
-        // Define shadows
-        let shadow = SurfaceAppearance.Shadow()
-        shadow.color = UIColor.black
-        shadow.offset = CGSize(width: 0, height: -1)
-        shadow.radius = 2
-        shadow.spread = 1
-        shadow.opacity = 0.3
-        appearance.shadows = [shadow]
-
-        // Define corner radius and background color
-        appearance.cornerRadius = 8.0
-        appearance.backgroundColor = .white
-
-        // Set the new appearance
-        fpc.surfaceView.appearance = appearance
-    }
+//    func setupFpcSurface() {
+//        // Create a new appearance.
+//        let appearance = SurfaceAppearance()
+//
+//        // Define shadows
+//        let shadow = SurfaceAppearance.Shadow()
+//        shadow.color = UIColor.black
+//        shadow.offset = CGSize(width: 0, height: -1)
+//        shadow.radius = 2
+//        shadow.spread = 1
+//        shadow.opacity = 0.3
+//        appearance.shadows = [shadow]
+//
+//        // Define corner radius and background color
+//        appearance.cornerRadius = 8.0
+//        appearance.backgroundColor = .white
+//
+//        // Set the new appearance
+//        fpc.surfaceView.appearance = appearance
+//    }
     
     //опциональная настройка граббера
-    func customGrabberHandle() {
-//       let myGrabberHandleView = GrabberViewCustom()
-//        fpc.surfaceView.grabberHandle.isHidden = true
-//        fpc.surfaceView.addSubview(myGrabberHandleView)
-        
-        //fpc.surfaceView.grabberHandle.barColor = .darkGray
-        //fpc.surfaceView.grabberHandlePadding = 10.0
-        fpc.surfaceView.grabberHandleSize = .init(width: 120.0, height: 5.0)
-    }
+//    func customGrabberHandle() {
+////       let myGrabberHandleView = GrabberViewCustom()
+////        fpc.surfaceView.grabberHandle.isHidden = true
+////        fpc.surfaceView.addSubview(myGrabberHandleView)
+//
+//        //fpc.surfaceView.grabberHandle.barColor = .darkGray
+//        //fpc.surfaceView.grabberHandlePadding = 10.0
+//        fpc.surfaceView.grabberHandleSize = .init(width: 120.0, height: 5.0)
+//    }
     
     //Customize content padding from surface edges
     func customizeEdges() {
@@ -87,9 +88,9 @@ extension ViewController {
 extension ViewController: WalletPickerModuleOutput {
     func closeModule() {
         
-        fpc.dismiss(animated: true) {
-            print("dismissed")
-        }
+//        fpc.dismiss(animated: true) {
+//            print("dismissed")
+//        }
 
     }
 }

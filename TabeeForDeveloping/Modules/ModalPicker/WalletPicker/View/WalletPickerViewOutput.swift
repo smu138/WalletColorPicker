@@ -11,4 +11,6 @@ protocol WalletPickerViewOutput {
     func viewWillAppear()
     
     func closeTapped()
+    
+    func openFPCModal()
 }
