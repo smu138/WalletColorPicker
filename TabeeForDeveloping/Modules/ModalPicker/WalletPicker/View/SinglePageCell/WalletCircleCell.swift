@@ -11,25 +11,11 @@ class WalletCircleCell: UICollectionViewCell {
     
     static let reuseId: String = String(describing: WalletCircleCell.self)
     
-    struct ColorsData {
-        let leftColor: UIColor
-        let rightColor: UIColor
-        
-        let backgroundColoe: UIColor
-
-        let circleRadius: CGFloat //радиус внутреннего круга
-        
-        let activityInProgress: Bool //показывать ли на нем индикатор загрузки
-        let needBorder: Bool //бордер вокруг
-        let borderColor: UIColor
-        let borderWidth: CGFloat
-        
-        let cornerRadius: CGFloat
-    }
+    var tapRecognizer: UITapGestureRecognizer?
     
     var action: ((_ walletCircle: WalletCircleCell) -> Void)?
 
-    var colorsData: ColorsData!
+    var colorsData: WalletSinglePageModel.ColorCircle.ColorsData!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,6 +36,11 @@ class WalletCircleCell: UICollectionViewCell {
         bgLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: colorsData.cornerRadius).cgPath
         bgLayer.fillColor = colorsData.backgroundColoe.cgColor
 
+        
+        layer.borderWidth = colorsData.borderWidth
+        layer.borderColor = colorsData.borderColor.cgColor
+        layer.cornerRadius = colorsData.cornerRadius
+        
         if colorsData.needBorder {
             layer.borderWidth = colorsData.borderWidth
             layer.borderColor = colorsData.borderColor.cgColor
@@ -86,9 +77,15 @@ class WalletCircleCell: UICollectionViewCell {
 
 extension WalletCircleCell {
     func setupAction() {
-        addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        )
+
+        if let tapRecognizer = tapRecognizer {
+            removeGestureRecognizer(tapRecognizer)
+        }
+
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+        tapRecognizer!.cancelsTouchesInView = false
+        
+        addGestureRecognizer(tapRecognizer!)
     }
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
@@ -109,7 +106,7 @@ extension WalletCircleCell {
         backgroundColor = .clear
     }
     
-    func configure(colorsData: ColorsData, action: @escaping (_ walletCircle: WalletCircleCell) -> Void) {
+    func configure(colorsData: WalletSinglePageModel.ColorCircle.ColorsData, action: @escaping (_ walletCircle: WalletCircleCell) -> Void) {
         self.colorsData = colorsData
 
         self.action = action

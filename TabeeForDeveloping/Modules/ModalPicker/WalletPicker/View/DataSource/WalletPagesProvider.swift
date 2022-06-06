@@ -12,7 +12,7 @@ struct WalletPagesProvider {
     var pages: [WalletSinglePageModel] = []
     
     func makeActive(walletCircleView: WalletCircleCell) {
-        let colorsData = WalletCircleCell.ColorsData(
+        let colorsData = WalletSinglePageModel.ColorCircle.ColorsData(
             leftColor: walletCircleView.colorsData.leftColor,
             rightColor: walletCircleView.colorsData.rightColor,
             backgroundColoe: walletCircleView.colorsData.backgroundColoe,

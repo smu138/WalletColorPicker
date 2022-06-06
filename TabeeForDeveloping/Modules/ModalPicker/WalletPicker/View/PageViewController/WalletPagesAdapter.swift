@@ -51,7 +51,12 @@ final class WalletPagesAdapter: NSObject {
 }
 
 // MARK: - Collection Delegate
-extension WalletPagesAdapter: UICollectionViewDelegate { }
+extension WalletPagesAdapter: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //если понадобится- то будет работать этот делегат для коллекции тоже (например для отправки аналитики)
+        //print("selected")
+    }
+}
 
 
 // MARK: - Collection DataSource
