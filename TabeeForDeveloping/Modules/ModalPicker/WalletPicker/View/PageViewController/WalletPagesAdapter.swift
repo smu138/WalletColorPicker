@@ -8,16 +8,22 @@
 import Foundation
 import UIKit
 
+protocol WalletPagesAdapterOutput: AnyObject {
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle)
+}
+
 final class WalletPagesAdapter: NSObject {
 
     weak var collectionView: UICollectionView!
+    weak var output: WalletPagesAdapterOutput?
 
     var model: WalletSinglePageModel!
     
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, delegate: WalletPagesAdapterOutput) {
         super.init()
         
         self.collectionView = collectionView
+        self.output = delegate
         
         configureCollectionView()
     }
@@ -55,6 +61,8 @@ extension WalletPagesAdapter: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //если понадобится- то будет работать этот делегат для коллекции тоже (например для отправки аналитики)
         //print("selected")
+ 
+        output?.cellTapped(with: model.colorCircles[indexPath.row])
     }
 }
 

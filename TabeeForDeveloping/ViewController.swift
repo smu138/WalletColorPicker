@@ -8,31 +8,41 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let pagesTestProvider = WalletPagesProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
         view.backgroundColor = .white
     }
-
 }
 
 
 extension ViewController {
     @IBAction func openModal(_ sender: Any) {
         
-        var pagesTestProvider = WalletPagesProvider()
-        let pages = pagesTestProvider.makePages()
+        //создание тестового набора данных
+        pagesTestProvider.makePages()
         
+        //создание модуля с набором тестовых данных
+        let walletViewController = WalletPickerAssembly(output: self).createModule(with: pagesTestProvider.pages)
         
-        let walletViewController = WalletPickerAssembly(output: self).createModule(with: pages)
+        //открытие модального окна
         walletViewController.output.openFPCModal()
     }
 }
 
+// MARK: - Исходящие данные из модуля
 extension ViewController: WalletPickerModuleOutput {
     
+    /// Поддержка событий через делегат модуля (также можно назначать события прямо при создании модели данных для модуля).
+    /// (реализацию смотреть в тестовом методе формирования данных `pagesTestProvider.makePages()` )
+    /// Оба способа сейчас работают - при интеграции модуля можно выбрать любой из них
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle) {
+        print("(опционально) (Вызов из делегата) тап ячейки \(circle.id)")
+    }
+    
+    /// Исходящая из модуля аналитика
     func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events) {
         switch event {
 

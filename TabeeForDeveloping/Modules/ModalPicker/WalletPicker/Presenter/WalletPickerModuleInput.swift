@@ -6,4 +6,7 @@
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-protocol WalletPickerModuleInput: AnyObject { }
+protocol WalletPickerModuleInput: AnyObject {
+   // func updateCircles(with: String)
+   // func updatePage(index: Int, with: [WalletSinglePageModel.ColorCircle])
+}

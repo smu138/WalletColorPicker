@@ -173,7 +173,8 @@ extension WalletPickerViewController {
                 circleRadius: 15,
                 activityInProgress: true,
                 needBorder: false,
-                borderColor: .green,
+                borderActiveColor: .green,
+                borderInactiveColor: .yellow,
                 borderWidth: 2,
                 cornerRadius: 3),
                   action: { _ in })
@@ -291,6 +292,10 @@ extension WalletPickerViewController: UIPageViewControllerDataSource, UIPageView
 // MARK: - Single Page Controllers output
 
 extension WalletPickerViewController: WalletPageViewControllerOutput {
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle) {
+        output.cellTapped(with: circle)
+    }
+    
     func closePageTapped(with page: WalletSinglePageModel) {
         output.closePageTapped(with: page)
     }

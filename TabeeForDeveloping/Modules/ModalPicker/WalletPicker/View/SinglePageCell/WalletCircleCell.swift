@@ -12,10 +12,10 @@ class WalletCircleCell: UICollectionViewCell {
     static let reuseId: String = String(describing: WalletCircleCell.self)
     
     var tapRecognizer: UITapGestureRecognizer?
-    
-    //var action: ((_ walletCircle: WalletCircleCell) -> Void)?
-    
+
     var model: WalletSinglePageModel.ColorCircle!
+    
+    var isActive: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,13 +36,14 @@ class WalletCircleCell: UICollectionViewCell {
         bgLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: model.dataForView.cornerRadius).cgPath
         bgLayer.fillColor = model.dataForView.backgroundColoe.cgColor
 
-//        layer.borderWidth = model.dataForView.borderWidth
-//        layer.borderColor = model.dataForView.borderColor.cgColor
-//        layer.cornerRadius = model.dataForView.cornerRadius
-        
-        if model.dataForView.needBorder {
+        if isSelected {
+        //if model.dataForView.needBorder {
             layer.borderWidth = model.dataForView.borderWidth
-            layer.borderColor = model.dataForView.borderColor.cgColor
+            layer.borderColor = model.dataForView.borderActiveColor.cgColor
+            layer.cornerRadius = model.dataForView.cornerRadius
+        } else {
+            layer.borderWidth = 1
+            layer.borderColor = model.dataForView.borderInactiveColor.cgColor
             layer.cornerRadius = model.dataForView.cornerRadius
         }
 
@@ -66,9 +67,10 @@ class WalletCircleCell: UICollectionViewCell {
         
         layer.masksToBounds = true
 
-        if model.dataForView.activityInProgress {
-            addActivityIndicator()
-        }
+        //activity здесь по ТЗ не требуется - результат не интерактивен
+//        if model.dataForView.activityInProgress {
+//            addActivityIndicator()
+//        }
     }
 }
 
@@ -89,7 +91,6 @@ extension WalletCircleCell {
     
     @objc func tapHandler(_ recognizer: UIGestureRecognizer) {
         model.action(self)
-        //action?(self)
     }
 }
 
@@ -100,6 +101,7 @@ extension WalletCircleCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        isActive = false
     }
     
     func setupStyle() {
@@ -108,6 +110,12 @@ extension WalletCircleCell {
 
     func configure(with model: WalletSinglePageModel.ColorCircle) {
         self.model = model
+    }
+    
+    override var isSelected: Bool {
+        didSet{
+           draw(frame)
+        }
     }
 }
 

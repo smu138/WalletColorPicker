@@ -22,9 +22,10 @@ struct WalletSinglePageModel {
             
             let activityInProgress: Bool //показывать ли на нем индикатор загрузки
             let needBorder: Bool //бордер вокруг
-            let borderColor: UIColor
+            let borderActiveColor: UIColor
+            let borderInactiveColor: UIColor
             let borderWidth: CGFloat
-            
+
             let cornerRadius: CGFloat
         }
         

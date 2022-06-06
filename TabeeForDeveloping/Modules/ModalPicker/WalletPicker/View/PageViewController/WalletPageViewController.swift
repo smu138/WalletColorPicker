@@ -15,6 +15,7 @@ protocol WalletPageViewControllerOutput: AnyObject {
     //пока не требуется
     func closePageTapped(with page: WalletSinglePageModel)
     func openUrlTapped(with page: WalletSinglePageModel)
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle)
 }
 
 class WalletPageViewController: UIViewController {
@@ -39,7 +40,7 @@ class WalletPageViewController: UIViewController {
         $0.numberOfLines = 1
         $0.textAlignment = .left
         $0.lineBreakMode = .byTruncatingMiddle
-        $0.font = .boldSystemFont(ofSize: 18)
+        $0.font = .boldSystemFont(ofSize: 22)
         $0.textColor     = .black
         $0.setContentCompressionResistancePriority(.required, for: .horizontal)
         return $0
@@ -82,10 +83,14 @@ class WalletPageViewController: UIViewController {
     let walletButton = PKAddPassButton(addPassButtonStyle: PKAddPassButtonStyle.black)
 
     private let closeButton: UIButton = {
-        $0.setTitle("I'll do it later", for: .normal)
-        //$0.setImage(AppAssets.catalogSectionHeaderSort.image, for: .normal)
-        $0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
-        //$0.tintColor = Palette.Text.contrast.color
+        //$0.contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        let font: UIFont = .systemFont(ofSize: 16)
+        
+        let attrString = NSAttributedString(string: "I'll do it later", attributes: [
+            .font : font,
+            .foregroundColor: UIColor.black
+        ])
+        $0.setAttributedTitle(attrString, for: .normal)
         return $0
     }(UIButton(type: .system))
 
@@ -138,12 +143,12 @@ extension WalletPageViewController {
         }
 
         topLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(32)
             make.leading.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(topLabel.snp.bottom).offset(8)
+            make.top.equalTo(topLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
@@ -163,7 +168,7 @@ extension WalletPageViewController {
     func applyStyles() { }
     
     func setupCollectionCircles(with page: WalletSinglePageModel) {
-        collectionAdapter = WalletPagesAdapter(collectionView: collectionView)
+        collectionAdapter = WalletPagesAdapter(collectionView: collectionView, delegate: self)
         collectionAdapter?.updateCollection(with: page)
     }
 }
@@ -176,4 +181,11 @@ extension WalletPageViewController {
     @objc func closeButtonAction() {
         output?.closePageTapped(with: page)
     }
+}
+
+extension WalletPageViewController: WalletPagesAdapterOutput {
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle) {
+        output?.cellTapped(with: circle)
+    }
+
 }

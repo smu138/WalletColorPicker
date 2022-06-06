@@ -12,6 +12,7 @@ protocol WalletPickerViewOutput {
     
     func closePageTapped(with page: WalletSinglePageModel)
     func openUrlTapped(with page: WalletSinglePageModel)
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle)
     
     //открывает из внешнего контроллера - этот
     func openFPCModal()

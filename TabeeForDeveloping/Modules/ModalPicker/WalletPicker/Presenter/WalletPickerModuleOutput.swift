@@ -8,4 +8,5 @@
 
 protocol WalletPickerModuleOutput: AnyObject {
     func sendAnalytic(event: WalletPickerDataFlow.Analytic.Events)
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle)
 }

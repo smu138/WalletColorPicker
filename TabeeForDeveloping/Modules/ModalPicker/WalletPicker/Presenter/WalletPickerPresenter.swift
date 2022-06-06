@@ -34,6 +34,11 @@ final class WalletPickerPresenter {
 // MARK: - WalletPickerViewOutput
 
 extension WalletPickerPresenter: WalletPickerViewOutput {
+    func cellTapped(with circle: WalletSinglePageModel.ColorCircle) {
+        output?.sendAnalytic(event: .colorCellTap(circle.id))
+        output?.cellTapped(with: circle)
+    }
+    
     
     func closePageTapped(with page: WalletSinglePageModel) {
         output?.sendAnalytic(event: .closeButtonTapped)
